@@ -1,0 +1,66 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- v180121
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop table if it already exists
+-------------------------
+
+
+DROP TABLE IF EXISTS Sales;
+
+-------------------------
+-- Create the table
+-------------------------
+
+CREATE TABLE Sales (
+	"item_name" VARCHAR(50) NOT NULL , 
+	"color" VARCHAR(50) NOT NULL , 
+	"clothes_size" VARCHAR(50) NOT NULL , 
+	"quantity" INTEGER, 
+PRIMARY KEY ("item_name", "color", "clothes_size") );
+
+
+---------------------------
+-- Populate the table
+---------------------------
+
+INSERT INTO "sales" VALUES('skirt','dark','small',2);
+INSERT INTO "sales" VALUES('skirt','dark','medium',5);
+INSERT INTO "sales" VALUES('skirt','dark','large',1);
+INSERT INTO "sales" VALUES('skirt','pastel','small',11);
+INSERT INTO "sales" VALUES('skirt','pastel','medium',9);
+INSERT INTO "sales" VALUES('skirt','pastel','large',15);
+INSERT INTO "sales" VALUES('skirt','white','small',2);
+INSERT INTO "sales" VALUES('skirt','white','medium',5);
+INSERT INTO "sales" VALUES('skirt','white','large',3);
+INSERT INTO "sales" VALUES('dress','dark','small',2);
+INSERT INTO "sales" VALUES('dress','dark','medium',6);
+INSERT INTO "sales" VALUES('dress','dark','large',12);
+INSERT INTO "sales" VALUES('dress','pastel','small',4);
+INSERT INTO "sales" VALUES('dress','pastel','medium',3);
+INSERT INTO "sales" VALUES('dress','pastel','large',3);
+INSERT INTO "sales" VALUES('dress','white','small',2);
+INSERT INTO "sales" VALUES('dress','white','medium',3);
+INSERT INTO "sales" VALUES('dress','white','large',0);
+INSERT INTO "sales" VALUES('shirt','dark','small',2);
+INSERT INTO "sales" VALUES('shirt','dark','medium',6);
+INSERT INTO "sales" VALUES('shirt','dark','large',6);
+INSERT INTO "sales" VALUES('shirt','pastel','small',4);
+INSERT INTO "sales" VALUES('shirt','pastel','medium',1);
+INSERT INTO "sales" VALUES('shirt','pastel','large',2);
+INSERT INTO "sales" VALUES('shirt','white','small',17);
+INSERT INTO "sales" VALUES('shirt','white','medium',1);
+INSERT INTO "sales" VALUES('shirt','white','large',10);
+INSERT INTO "sales" VALUES('pants','dark','small',14);
+INSERT INTO "sales" VALUES('pants','dark','medium',6);
+INSERT INTO "sales" VALUES('pants','dark','large',0);
+INSERT INTO "sales" VALUES('pants','pastel','small',1);
+INSERT INTO "sales" VALUES('pants','pastel','medium',0);
+INSERT INTO "sales" VALUES('pants','pastel','large',1);
+INSERT INTO "sales" VALUES('pants','white','small',3);
+INSERT INTO "sales" VALUES('pants','white','medium',0);
+INSERT INTO "sales" VALUES('pants','white','large',2);

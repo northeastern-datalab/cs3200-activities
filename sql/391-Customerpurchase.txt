@@ -1,0 +1,53 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- v180121
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+------------------------- 
+
+DROP TABLE IF EXISTS Purchase;
+DROP TABLE IF EXISTS Customer;
+
+
+---------------------------
+-- Create the tables
+---------------------------
+
+create table Customer (
+	cid int,
+	name varchar(100),
+	age int,
+	address varchar(100),
+	salary int,
+PRIMARY KEY (cid) );
+
+create table Purchase (
+	oid int,
+	date date,
+	cid int,
+	amount int,
+PRIMARY KEY (oid),
+FOREIGN KEY (cid) REFERENCES Customer );
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO Customer VALUES (1, 'Ramesh',   32, 'Ahmedabad', 2000);
+INSERT INTO Customer VALUES (2, 'Khilan',   25, 'Delhi'    , 1500);
+INSERT INTO Customer VALUES (3, 'kaushik',  23, 'Kota'     , 2000);
+INSERT INTO Customer VALUES (4, 'Chaitali', 25, 'Mumbai'   , 6500);
+INSERT INTO Customer VALUES (5, 'Hardik',   27, 'Bhopal'   , 8500);
+INSERT INTO Customer VALUES (6, 'Komal',    22, 'MP'       , 4500);
+INSERT INTO Customer VALUES (7, 'Muffy',    24, 'Indore'   , 10000);
+
+INSERT INTO Purchase VALUES (102,'2009-10-08 00:00:00',3,3000);
+INSERT INTO Purchase VALUES (100,'2009-10-08 00:00:00',3,1500);
+INSERT INTO Purchase VALUES (101,'2009-11-20 00:00:00',2,1560);
+INSERT INTO Purchase VALUES (103,'2008-05-20 00:00:00',4,2060);

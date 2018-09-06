@@ -1,0 +1,44 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- v180121
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS R;
+DROP TABLE IF EXISTS S;
+DROP TABLE IF EXISTS T;
+DROP TABLE IF EXISTS T2;
+DROP TABLE IF EXISTS U;
+
+
+
+
+-------------------------
+-- Create tables
+-------------------------
+
+create table R (a int PRIMARY KEY); 
+create table S (a int PRIMARY KEY); 
+create table T (a int PRIMARY KEY); 
+create table T2 (a int PRIMARY KEY); 
+create table U (a int PRIMARY KEY); 
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+insert into R values (1);
+insert into R values (2);
+insert into S values (1);
+insert into T values (2);
+insert into U values (2);
+insert into U values (3);
+insert into U values (4);
+
+

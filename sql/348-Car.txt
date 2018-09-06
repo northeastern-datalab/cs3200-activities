@@ -1,0 +1,33 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- v180121
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+
+DROP TABLE IF EXISTS Car;
+
+
+-------------------------
+-- Create the tables
+-------------------------
+
+create table Car ( 
+	name varchar(20) PRIMARY KEY, 
+	price int,
+	maker varchar(20) ); 
+---------------------------
+-- Populate the tables
+---------------------------
+
+
+INSERT INTO Car VALUES ('M3', 120, 'BMW'); 
+INSERT INTO Car VALUES ('M5', 150, 'BMW'); 
+INSERT INTO Car VALUES ('Prius', 50, 'Toyota'); 
+INSERT INTO Car VALUES ('Lexus1', 75, 'Toyota'); 
+INSERT INTO Car VALUES ('Lexus2', 100, 'Toyota'); 

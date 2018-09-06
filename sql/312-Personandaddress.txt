@@ -1,0 +1,41 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- v180121
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+
+DROP TABLE IF EXISTS Person;
+DROP TABLE IF EXISTS University;
+
+-------------------------
+-- Create the tables
+-------------------------
+
+create table University ( 
+	uName varchar(20) PRIMARY KEY, 
+	address varchar(50) ); 
+
+create table Person ( 
+	pName varchar(20), 
+	address varchar(50), 
+	works_for varchar(20), 
+PRIMARY KEY (pName), 
+FOREIGN KEY (works_for) REFERENCES University(uName) ); 
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+insert into University values ('CMU', '5000 Forbes Ave'); 
+insert into University values ('UPitt', '4200 Fifth Ave'); 
+
+insert into Person values ('Alice', '5200 Walnut St', 'CMU'); 
+insert into Person values ('Bob', '10 S Aiken Ave', 'UPitt'); 
+insert into Person values ('Charly', '4000 Fifth Ave', 'UPitt'); 

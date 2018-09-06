@@ -1,0 +1,61 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- v180121
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+
+
+DROP TABLE IF EXISTS Quote;
+DROP TABLE IF EXISTS RawMaterial;
+DROP TABLE IF EXISTS Vendor;
+
+
+
+-------------------------
+-- Create the tables
+-------------------------
+
+create table RawMaterial (
+	material_ID int PRIMARY KEY, 
+	standard_cost DECIMAL(16,2), 
+	unit_of_measure varchar(10));
+
+create table Vendor (
+	vendor_ID int PRIMARY KEY, 
+	vendor_name varchar(100),
+	vendor_address varchar(100)); 
+
+create table Quote (
+	material_ID int, 
+	vendor_ID int, 
+	unit_price decimal(16,2), 
+PRIMARY KEY (material_ID, vendor_ID),
+FOREIGN KEY (material_ID) REFERENCES RawMaterial(material_ID),
+FOREIGN KEY (vendor_ID) REFERENCES Vendor(vendor_ID)); 
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO RawMaterial VALUES (1, 17.00, '$/kg');
+INSERT INTO RawMaterial VALUES (2, 3.00, '$/m');
+INSERT INTO RawMaterial VALUES (3, 5.00, '$/l');
+
+INSERT INTO Vendor VALUES (1, 'Great Shop', '5000 Forbes Avenue');
+INSERT INTO Vendor VALUES (2, 'Awesome Shop', '6000 Forbes Avenue');
+
+INSERT INTO Quote VALUES (1, 1, 16.99);
+INSERT INTO Quote VALUES (2, 1, 2.99);
+INSERT INTO Quote VALUES (3, 1, 4.99);
+INSERT INTO Quote VALUES (1, 2, 16.98);
+INSERT INTO Quote VALUES (2, 2, 2.98);
+INSERT INTO Quote VALUES (3, 2, 4.98);
+

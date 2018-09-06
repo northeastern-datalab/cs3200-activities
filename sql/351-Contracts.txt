@@ -1,0 +1,43 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- v180121
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS Contract;
+DROP TABLE IF EXISTS ContractRelationship;
+
+-------------------------
+-- Create the tables
+-------------------------
+
+create table ContractRelationship (
+	crID int PRIMARY KEY, 
+	details varchar(20));
+
+create table Contract (
+	contractNumber int PRIMARY KEY, 
+	details varchar(20),
+	crID int,
+FOREIGN KEY (crID) REFERENCES ContractRelationship(crID)); 
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO ContractRelationship VALUES (101, 'First Relationship');
+INSERT INTO ContractRelationship VALUES (102, 'Second Relationship');
+INSERT INTO ContractRelationship VALUES (103, 'Third Relationship');
+
+INSERT INTO Contract VALUES (1, 'blue contract', '101');
+INSERT INTO Contract VALUES (2, 'white contract', '101');
+INSERT INTO Contract VALUES (3, 'red contract', '101');
+
+INSERT INTO Contract VALUES (4, 'orange contract', '102');
+INSERT INTO Contract VALUES (5, 'perl contract', '102');

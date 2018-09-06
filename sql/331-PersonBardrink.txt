@@ -1,0 +1,59 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- v180121
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+
+DROP TABLE IF EXISTS Likes;
+DROP TABLE IF EXISTS Frequents;
+DROP TABLE IF EXISTS Serves;
+
+
+---------------------------
+-- Create the tables
+---------------------------
+
+create table Likes( 
+	person char(20), 
+	drink char(20), 
+PRIMARY KEY (person, drink)); 
+
+create table Frequents( 
+	person char(20), 
+	bar char(20), 
+PRIMARY KEY (person, bar));
+
+create table Serves( 
+	bar char(20), 
+	drink char(20), 
+PRIMARY KEY (bar, drink)); 
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO Likes VALUES ('Alice', 'Whitebeer'); 
+INSERT INTO Likes VALUES ('Bob', 'Brownbeer'); 
+INSERT INTO Likes VALUES ('Charlie', 'Whitebeer'); 
+INSERT INTO Likes VALUES ('Charlie', 'Blackbeer'); 
+
+INSERT INTO Serves VALUES ('Groundbar', 'Whitebeer'); 
+INSERT INTO Serves VALUES ('Seabar', 'Whitebeer'); 
+INSERT INTO Serves VALUES ('Seabar', 'Blackbeer'); 
+INSERT INTO Serves VALUES ('Skybar', 'Whitebeer'); 
+INSERT INTO Serves VALUES ('Skybar', 'Brownbeer'); 
+INSERT INTO Serves VALUES ('Skybar', 'Blackbeer'); 
+
+INSERT INTO Frequents VALUES ('Alice', 'Seabar'); 
+INSERT INTO Frequents VALUES ('Alice', 'Skybar'); 
+INSERT INTO Frequents VALUES ('Bob', 'Groundbar'); 
+INSERT INTO Frequents VALUES ('Bob', 'Seabar'); 
+INSERT INTO Frequents VALUES ('Charlie', 'Seabar'); 
+

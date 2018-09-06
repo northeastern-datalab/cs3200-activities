@@ -1,0 +1,45 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- v180121
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS Employee2;
+DROP TABLE IF EXISTS Department2;
+
+-------------------------
+-- Create the tables
+-------------------------
+
+create table Department2 ( 
+	departmentid int PRIMARY KEY, 
+	departmentname varchar(20) ); 
+
+create table Employee2 ( 
+	lastname varchar(20) PRIMARY KEY, 
+	departmentid int,
+-- FOREIGN KEY (departmentid) REFERENCES Department(departmentid) 
+FOREIGN KEY (departmentid) REFERENCES Department
+ ); 
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+
+INSERT INTO Department2 VALUES (31, 'Sales'); 
+INSERT INTO Department2 VALUES (33, 'Engineering'); 
+INSERT INTO Department2 VALUES (34, 'Clerical'); 
+INSERT INTO Department2 VALUES (35, 'Marketing'); 
+
+INSERT INTO Employee2 VALUES ('Rafferty', 31); 
+INSERT INTO Employee2 VALUES ('Jones', 33);
+INSERT INTO Employee2 VALUES ('Steinberg', 33);
+INSERT INTO Employee2 VALUES ('Robinson', 34);
+INSERT INTO Employee2 VALUES ('Smith', 34);
+

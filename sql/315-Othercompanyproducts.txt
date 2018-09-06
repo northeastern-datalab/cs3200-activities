@@ -1,0 +1,53 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- v180121
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+------------------------- 
+
+DROP TABLE IF EXISTS Product2;
+DROP TABLE IF EXISTS Company2;
+
+---------------------------
+-- Create the tables
+---------------------------
+
+create table Company2 ( 
+	cid int PRIMARY KEY, 
+	cname 	varchar(20),  
+	city	varchar(20)); 
+
+create table Product2 ( 
+	pname 	varchar(20), 
+	price	float, 
+	cid	int, 
+PRIMARY KEY (PName, cid), 
+FOREIGN KEY (cid) REFERENCES Company2(cid) ); 
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+insert into Company2 values (1, 'GizmoWorks', 'Oslo'); 
+insert into Company2 values (2, 'Canon', 'Osaka'); 
+insert into Company2 values (3, 'Hitachi', 'Kyoto'); 
+
+insert into Product2 values ('Gizmo', 19.99, 1); 
+insert into Product2 values ('Powergizmo', 29.99, 1); 
+insert into Product2 values ('SingleTouch', 14.99, 2); 
+insert into Product2 values ('MultiTouch', 203.99, 3); 
+
+-- insert into Company2 values (1, 'Francesco', 'Roma'); 
+-- insert into Company2 values (2, 'Frederico', 'Roma'); 
+-- insert into Company2 values (3, 'Francois', 'Paris'); 
+
+-- insert into Product2 values ('Gelato', 11, 1); 
+-- insert into Product2 values ('Gelato', 20, 2); 
+-- insert into Product2 values ('Baguette', 18, 2); 
+-- insert into Product2 values ('Gelato', 16, 3); 
+-- insert into Product2 values ('Baguette', 10, 3); 

@@ -1,0 +1,33 @@
+NSM 20180905
+
+Here is an overview of how these files were changed.
+
+Inside some files comments were left with more details.
+
+Run `bash test.sh` (which tests all the `*.txt` files) to check syntax through Postgres and Sqlite3
+
+
+# How these files were changed
+mkdir common
+cp postgres/* common
+cd common
+find . -type f | while read f; do echo "$f";a="${f// /}"; b="${a//-PostgreSQLserver}"; c="${b//-PostgreSQL}"; d="${c//-postgreSQL/}"; e="${d//-PostgreSql}"; mv "$f" "$e"; done
+find . -type f | while read f; do echo CURRENT FILE: "$f"; sed -E -i '' '/DO .*|BEGIN.*|.*WHERE table_name =.*|END IF.*|END .*|IF EXISTS \(SELECT \* FROM information_schema.tables/d' "$f"; sed -E -i '' 's/[[:space:]]*DROP Table/DROP TABLE IF EXISTS/' "$f"; echo; echo; done
+
+# In VIM - check order of table deletion based on foreign key constraints
+# :%s/insert into/INSERT INTO/g
+# :%s/values/VALUES/g
+
+
+# TODO: imdb.zip
+
+# TODO - combine consecutive insert statements?
+
+# TODO - Chinook database is totally broken - the order of deletion and creation is way off...
+
+344 - changed tables due to apparent name collision
+attempting to run caused deletion error for a table that doesn't exist in this file:
+
+		psql:344-Employees.txt:12: ERROR:  cannot drop table employee because other objects depend on it
+		DETAIL:  constraint customer_supportrepid_fkey on table customer depends on table employee
+

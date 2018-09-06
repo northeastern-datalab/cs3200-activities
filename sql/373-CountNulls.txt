@@ -1,0 +1,37 @@
+-------------------------------------------------------------
+-- Example SQLite commands for 45881/70455 Modern Data Management
+-- Wolfgang Gatterbauer
+-- v160226
+-------------------------------------------------------------
+
+
+-------------------------
+-- Drop tables if they already exist
+------------------------- 
+
+DROP TABLE IF EXISTS T; 
+
+
+---------------------------
+-- Create the tables
+---------------------------
+
+CREATE TABLE T (
+	gid int,
+	val varchar(10));
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO T VALUES (1, Null);
+INSERT INTO T VALUES (1, Null);
+INSERT INTO T VALUES (2, 'a');
+INSERT INTO T VALUES (2, 'B');
+INSERT INTO T VALUES (2, 'z');
+INSERT INTO T VALUES (2, 'z');
+INSERT INTO T VALUES (2, Null);
+INSERT INTO T VALUES (3, 'A');
+INSERT INTO T VALUES (3, 'A');
+INSERT INTO T VALUES (3, 'Z');

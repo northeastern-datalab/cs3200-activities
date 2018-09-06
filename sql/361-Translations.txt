@@ -1,0 +1,49 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- v180121
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+
+DROP TABLE IF EXISTS English;
+DROP TABLE IF EXISTS French;
+
+
+-------------------------
+-- Create the tables
+-------------------------
+
+create table English ( 
+	etext varchar(20), 
+	eid int PRIMARY KEY); 
+
+create table French ( 
+	fid int PRIMARY KEY, 
+	ftext varchar(20)); 
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+
+INSERT INTO English VALUES ('One', 1); 
+INSERT INTO English VALUES ('Two', 2);
+INSERT INTO English VALUES ('Three', 3);
+INSERT INTO English VALUES ('Four', 4);
+INSERT INTO English VALUES ('Five', 5);
+INSERT INTO English VALUES ('Six', 6);
+
+INSERT INTO French VALUES (1, 'Un'); 
+INSERT INTO French VALUES (3, 'Trois'); 
+INSERT INTO French VALUES (4, 'Quatre'); 
+INSERT INTO French VALUES (5, 'Cinq'); 
+INSERT INTO French VALUES (6, 'Siz'); 
+INSERT INTO French VALUES (7, 'Sept'); 
+INSERT INTO French VALUES (8, 'Huit'); 
