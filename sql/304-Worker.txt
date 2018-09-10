@@ -1,0 +1,31 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- v180121
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+
+DROP TABLE IF EXISTS Worker;
+
+
+---------------------------
+-- Create the tables
+---------------------------
+
+create table Worker ( 
+	name varchar(20) PRIMARY KEY,
+	birthdate date);
+
+--------------------------- 
+-- Populate the tables 
+---------------------------
+
+INSERT INTO worker VALUES ('Max', '1980-01-01');
+INSERT INTO worker VALUES ('Fred', '1979-02-01');
+INSERT INTO worker VALUES ('Susan', '1990-01-31');
+INSERT INTO worker VALUES ('Tilda', '1988-01-01');
