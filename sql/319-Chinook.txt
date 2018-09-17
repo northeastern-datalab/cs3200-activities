@@ -15,12 +15,13 @@ EDITED - NSM 20180917
 Create and connect to new database.
 Set encoding.
 Drop tables if necessary
-*/
 
+-- When running via `psql -f FILE`:
 DROP DATABASE IF EXISTS chinook;
 CREATE DATABASE chinook;
 \c chinooktest;
 \encoding 'latin1'
+*/
 
 DROP TABLE IF EXISTS PlaylistTrack;
 DROP TABLE IF EXISTS Playlist;
