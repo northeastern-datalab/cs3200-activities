@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS actor;
 
 CREATE TABLE actor (
   id int NOT NULL default '0',
-  fnam" varchar(100) default NULL,
+  fname varchar(100) default NULL,
   lname varchar(100) default NULL,
   gender char(1) default NULL,
   PRIMARY KEY  (id)
