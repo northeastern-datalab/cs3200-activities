@@ -1,6 +1,6 @@
 -------------------------------------------------------------
 -- cs3200 Database design
--- v180121
+-- https://github.com/northeastern-datalab/cs3200/
 -------------------------------------------------------------
 
 
@@ -9,10 +9,9 @@
 -- Drop tables if they already exist
 -------------------------
 
-
-
 DROP TABLE IF EXISTS Item;
-DROP TABLE IF EXISTS Purchase2;
+DROP TABLE IF EXISTS Purchase;
+
 
 
 ---------------------------
@@ -23,11 +22,12 @@ create table Item (
 	name varchar(20) PRIMARY KEY, 
 	category varchar(20)); 
 
-create table Purchase2 ( 
+create table Purchase ( 
 	iName varchar(20), 
 	store varchar(20), 
 	month int, 
 PRIMARY KEY (iname,store,month) ); 
+
 
 
 ---------------------------
@@ -38,7 +38,7 @@ INSERT INTO Item VALUES ('Gizmo', 'Gadget');
 INSERT INTO Item VALUES ('Camera', 'Photo'); 
 INSERT INTO Item VALUES ('OneClick', 'Photo'); 
 
-INSERT INTO Purchase2 VALUES ('Gizmo', 'Wiz', 8); 
-INSERT INTO Purchase2 VALUES ('Camera', 'Ritz', 8); 
-INSERT INTO Purchase2 VALUES ('Camera', 'Wiz', 9); 
+INSERT INTO Purchase VALUES ('Gizmo', 'Wiz', 8); 
+INSERT INTO Purchase VALUES ('Camera', 'Ritz', 8); 
+INSERT INTO Purchase VALUES ('Camera', 'Wiz', 9); 
 
