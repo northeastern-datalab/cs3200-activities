@@ -1,6 +1,6 @@
 -------------------------------------------------------------
 -- cs3200 Database design
--- v180121
+-- https://github.com/northeastern-datalab/cs3200/
 -------------------------------------------------------------
 
 
@@ -9,9 +9,10 @@
 -- Drop tables if they already exist
 -------------------------
 
-
 DROP TABLE IF EXISTS Person;
 DROP TABLE IF EXISTS University;
+
+
 
 -------------------------
 -- Create the tables
@@ -27,6 +28,7 @@ create table Person (
 	works_for varchar(20), 
 PRIMARY KEY (pName), 
 FOREIGN KEY (works_for) REFERENCES University(uName) ); 
+
 
 
 ---------------------------

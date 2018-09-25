@@ -1,0 +1,69 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://github.com/northeastern-datalab/cs3200/
+-------------------------------------------------------------
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS M;
+DROP TABLE IF EXISTS N;
+DROP TABLE IF EXISTS L;
+
+DROP TABLE IF EXISTS R;
+DROP TABLE IF EXISTS S;
+DROP TABLE IF EXISTS T;
+
+
+---------------------------
+-- Create the tables
+---------------------------
+
+create table M ( 
+	A int); 
+
+create table N ( 
+	A int); 
+
+create table L ( 
+	A int); 
+	
+	
+create table R ( 
+	A int,
+	B int); 
+
+create table S ( 
+	B int,
+	C int); 
+
+create table T ( 
+	A int,
+	C int); 
+
+
+--------------------------- 
+-- Populate the tables 
+---------------------------
+
+insert into M values (1); 
+insert into M values (2); 
+
+insert into N values (2); 
+insert into N values (3); 
+
+insert into L values (1); 
+insert into L values (3); 
+
+
+insert into R values (1, 2); 
+
+insert into S values (2, 3); 
+
+insert into T values (4, 5); 
+
+
+
+

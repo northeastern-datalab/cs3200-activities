@@ -1,6 +1,6 @@
 -------------------------------------------------------------
 -- cs3200 Database design
--- v180121
+-- https://github.com/northeastern-datalab/cs3200/
 -------------------------------------------------------------
 
 
@@ -11,6 +11,8 @@
 
 DROP TABLE IF EXISTS Product2;
 DROP TABLE IF EXISTS Company2;
+
+
 
 ---------------------------
 -- Create the tables
@@ -27,6 +29,7 @@ create table Product2 (
 	cid	int, 
 PRIMARY KEY (PName, cid), 
 FOREIGN KEY (cid) REFERENCES Company2(cid) ); 
+
 
 
 ---------------------------

@@ -1,6 +1,6 @@
 -------------------------------------------------------------
 -- cs3200 Database design
--- v180121
+-- https://github.com/northeastern-datalab/cs3200/
 -------------------------------------------------------------
 
 
@@ -11,6 +11,8 @@
 
 DROP TABLE IF EXISTS Purchase;
 
+
+
 -------------------------
 -- Create the table
 ------------------------- 
@@ -20,6 +22,7 @@ create table Purchase (
 	price int, 
 	quantity int, 
 PRIMARY KEY (product, price, quantity) ); 
+
 
 
 ---------------------------

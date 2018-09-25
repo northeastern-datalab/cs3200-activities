@@ -1,6 +1,6 @@
 -------------------------------------------------------------
 -- cs3200 Database design
--- v180121
+-- https://github.com/northeastern-datalab/cs3200/
 -------------------------------------------------------------
 
 
@@ -11,6 +11,8 @@
 
 DROP TABLE IF EXISTS Contract;
 DROP TABLE IF EXISTS ContractRelationship;
+
+
 
 -------------------------
 -- Create the tables
@@ -25,6 +27,7 @@ create table Contract (
 	details varchar(20),
 	crID int,
 FOREIGN KEY (crID) REFERENCES ContractRelationship(crID)); 
+
 
 
 ---------------------------

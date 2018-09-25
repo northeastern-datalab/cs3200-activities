@@ -1,8 +1,9 @@
 -------------------------------------------------------------
 -- cs3200 Database design
--- v180121
+-- https://github.com/northeastern-datalab/cs3200/
 -- Database instance and query from Ramakrishnan, Gehrke: Database management systems, 2nd ed (2000)
 -------------------------------------------------------------
+
 
 
 -------------------------
@@ -12,6 +13,7 @@
 DROP TABLE IF EXISTS Reserves;
 DROP TABLE IF EXISTS Sailors;
 DROP TABLE IF EXISTS Boats;
+
 
 
 -------------------------
@@ -36,6 +38,7 @@ create table Reserves (
 PRIMARY KEY (sid,bid,day), 
 FOREIGN KEY (sid) REFERENCES Sailors(sid), 
 FOREIGN KEY (bid) REFERENCES Boats(bid) ); 
+
 
 
 ---------------------------

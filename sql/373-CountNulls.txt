@@ -1,8 +1,8 @@
 -------------------------------------------------------------
--- Example SQLite commands for 45881/70455 Modern Data Management
--- Wolfgang Gatterbauer
--- v160226
+-- cs3200 Database design
+-- https://github.com/northeastern-datalab/cs3200/
 -------------------------------------------------------------
+
 
 
 -------------------------
@@ -12,6 +12,7 @@
 DROP TABLE IF EXISTS T; 
 
 
+
 ---------------------------
 -- Create the tables
 ---------------------------
@@ -19,6 +20,7 @@ DROP TABLE IF EXISTS T;
 CREATE TABLE T (
 	gid int,
 	val varchar(10));
+
 
 
 ---------------------------

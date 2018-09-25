@@ -1,6 +1,6 @@
 -------------------------------------------------------------
 -- cs3200 Database design
--- v180121
+-- https://github.com/northeastern-datalab/cs3200/
 -------------------------------------------------------------
 
 
@@ -17,7 +17,6 @@ DROP TABLE IF EXISTS U;
 
 
 
-
 -------------------------
 -- Create tables
 -------------------------
@@ -27,6 +26,7 @@ create table S (a int PRIMARY KEY);
 create table T (a int PRIMARY KEY); 
 create table T2 (a int PRIMARY KEY); 
 create table U (a int PRIMARY KEY); 
+
 
 
 ---------------------------
@@ -40,5 +40,3 @@ insert into T values (2);
 insert into U values (2);
 insert into U values (3);
 insert into U values (4);
-
-

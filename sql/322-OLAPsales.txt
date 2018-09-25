@@ -1,6 +1,6 @@
 -------------------------------------------------------------
 -- cs3200 Database design
--- v180121
+-- https://github.com/northeastern-datalab/cs3200/
 -------------------------------------------------------------
 
 
@@ -9,8 +9,9 @@
 -- Drop table if it already exists
 -------------------------
 
-
 DROP TABLE IF EXISTS Sales;
+
+
 
 -------------------------
 -- Create the table
@@ -22,6 +23,7 @@ CREATE TABLE Sales (
 	"clothes_size" VARCHAR(50) NOT NULL , 
 	"quantity" INTEGER, 
 PRIMARY KEY ("item_name", "color", "clothes_size") );
+
 
 
 ---------------------------

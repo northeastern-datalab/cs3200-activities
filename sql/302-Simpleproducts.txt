@@ -1,6 +1,6 @@
 -------------------------------------------------------------
 -- cs3200 Database design
--- v180121
+-- https://github.com/northeastern-datalab/cs3200/
 -------------------------------------------------------------
 
 
@@ -9,9 +9,9 @@
 -- Drop tables if they already exist
 -------------------------
 
-
 DROP TABLE IF EXISTS Product;
 DROP TABLE IF EXISTS Company;
+
 
 
 ---------------------------
@@ -32,6 +32,7 @@ PRIMARY KEY (PName),
 FOREIGN KEY (Manufacturer) REFERENCES Company(CName) ); 
 
 
+
 --------------------------- 
 -- Populate the tables 
 ---------------------------
@@ -44,9 +45,4 @@ insert into Product values ('Gizmo', 19.99, 'Gadgets', 'GizmoWorks');
 insert into Product values ('PowerGizmo', 29.99, 'Gadgets', 'GizmoWorks'); 
 insert into Product values ('SingleTouch', 149.99, 'Photography', 'Canon'); 
 insert into Product values ('MultiTouch', 203.99, 'Household', 'Hitachi'); 
-
-
---------------------------- 
--- OPTIONAL: Show all foreign key relationships referencing our table company 
---------------------------- 
 

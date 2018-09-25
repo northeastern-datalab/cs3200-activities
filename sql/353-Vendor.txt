@@ -1,6 +1,6 @@
 -------------------------------------------------------------
 -- cs3200 Database design
--- v180121
+-- https://github.com/northeastern-datalab/cs3200/
 -------------------------------------------------------------
 
 
@@ -8,8 +8,6 @@
 -------------------------
 -- Drop tables if they already exist
 -------------------------
-
-
 
 DROP TABLE IF EXISTS Quote;
 DROP TABLE IF EXISTS RawMaterial;

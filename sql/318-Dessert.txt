@@ -1,6 +1,14 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://github.com/northeastern-datalab/cs3200/
+-------------------------------------------------------------
+
+
 drop database if exists dessert;
 create database dessert; 
 \c dessert; 
+
+
 
 drop table if exists ice_cream;
 create table ice_cream (
@@ -9,9 +17,7 @@ topping varchar(20) NOT NULL,
 serving_size varchar(20) NOT NULL
 );
 
---Q1 List ice creams that have least 3 serving sizes in each of at least 2 toppings
 
---Q2 List ice creams that have least 2 toppings in each of at least 3 serving sizes
 
 INSERT INTO ice_cream (flavor, topping, serving_size) VALUES
 ('vanilla', 'oreo', 'lg'),
@@ -31,6 +37,14 @@ INSERT INTO ice_cream (flavor, topping, serving_size) VALUES
 ('chocolate', 'cherry', 'xxl'),
 ('chocolate', 'cherry', 'jumbo_bellyache');
 
+
+
+--Q1 List ice creams that have least 3 serving sizes in each of at least 2 toppings
+
+--Q2 List ice creams that have least 2 toppings in each of at least 3 serving sizes
+
+
+
 -- Q1 Asks us to find at least two toppings with a special property. 
 SELECT flavor
 FROM 
@@ -43,6 +57,7 @@ FROM
 ) as x
 -- Finally, in the outer query, we group by flavor
 GROUP BY flavor HAVING count(topping) >= 2;
+
 
 
 -- Q2

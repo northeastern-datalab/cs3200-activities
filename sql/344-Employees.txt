@@ -1,6 +1,6 @@
 -------------------------------------------------------------
 -- cs3200 Database design
--- v180121
+-- https://github.com/northeastern-datalab/cs3200/
 -------------------------------------------------------------
 
 
@@ -9,37 +9,40 @@
 -- Drop tables if they already exist
 -------------------------
 
-DROP TABLE IF EXISTS Employee2;
-DROP TABLE IF EXISTS Department2;
+DROP TABLE IF EXISTS Employee;
+DROP TABLE IF EXISTS Department;
+
+
 
 -------------------------
 -- Create the tables
 -------------------------
 
-create table Department2 ( 
+create table Department ( 
 	departmentid int PRIMARY KEY, 
 	departmentname varchar(20) ); 
 
-create table Employee2 ( 
+create table Employee ( 
 	lastname varchar(20) PRIMARY KEY, 
 	departmentid int,
 -- FOREIGN KEY (departmentid) REFERENCES Department(departmentid) 
 FOREIGN KEY (departmentid) REFERENCES Department
  ); 
 
+
+
 ---------------------------
 -- Populate the tables
 ---------------------------
 
+INSERT INTO Department VALUES (31, 'Sales'); 
+INSERT INTO Department VALUES (33, 'Engineering'); 
+INSERT INTO Department VALUES (34, 'Clerical'); 
+INSERT INTO Department VALUES (35, 'Marketing'); 
 
-INSERT INTO Department2 VALUES (31, 'Sales'); 
-INSERT INTO Department2 VALUES (33, 'Engineering'); 
-INSERT INTO Department2 VALUES (34, 'Clerical'); 
-INSERT INTO Department2 VALUES (35, 'Marketing'); 
-
-INSERT INTO Employee2 VALUES ('Rafferty', 31); 
-INSERT INTO Employee2 VALUES ('Jones', 33);
-INSERT INTO Employee2 VALUES ('Steinberg', 33);
-INSERT INTO Employee2 VALUES ('Robinson', 34);
-INSERT INTO Employee2 VALUES ('Smith', 34);
+INSERT INTO Employee VALUES ('Rafferty', 31); 
+INSERT INTO Employee VALUES ('Jones', 33);
+INSERT INTO Employee VALUES ('Steinberg', 33);
+INSERT INTO Employee VALUES ('Robinson', 34);
+INSERT INTO Employee VALUES ('Smith', 34);
 

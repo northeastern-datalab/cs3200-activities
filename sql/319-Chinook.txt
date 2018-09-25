@@ -1,3 +1,10 @@
+-------------------------------------------------------------
+-- Chinook variant without quotation marks for cs3200
+-- cs3200 Database design
+-- https://github.com/northeastern-datalab/cs3200/
+-------------------------------------------------------------
+
+
 
 /*******************************************************************************
    Chinook Database - Version 1.4
@@ -7,8 +14,11 @@
    Author: Luis Rocha
    License: http://www.codeplex.com/ChinookDatabase/license
 
+
 Variant without quotation marks for cs3200 (180128)
 ********************************************************************************/
+
+
 
 /* 
 EDITED - NSM 20180917
@@ -34,6 +44,7 @@ DROP TABLE IF EXISTS MediaType;
 DROP TABLE IF EXISTS Genre;
 DROP TABLE IF EXISTS Album;
 DROP TABLE IF EXISTS Artist;
+
 
 
 /*******************************************************************************
@@ -163,6 +174,8 @@ CREATE TABLE Track
 /*******************************************************************************
    Create Primary Key Unique Indexes
 ********************************************************************************/
+
+
 
 /*******************************************************************************
    Create Foreign Keys
