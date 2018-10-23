@@ -1,0 +1,18 @@
+1) Install pip if you do not have it:
+
+	https://pip.pypa.io/en/stable/installing/
+
+
+2) To install necessary python dependencies:
+
+	pip install -r requirements.txt
+
+You may need to `sudo ...`, depending on your folder permissions.
+If you would prefer to install only for the current user, you can instead:
+
+	pip install --user -r requirements.txt
+
+
+3) Once the dependencies are installed, launch jupyter by navigating to this directory and doing:
+
+	jupyter notebook
