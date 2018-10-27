@@ -14,7 +14,9 @@ def to_set(x):
   else:
     raise Exception("Unrecognized type.")
 
-def fd_to_str((lhs,rhs)): return ",".join(to_set(lhs)) + " -> " + ",".join(to_set(rhs))
+def fd_to_str(t): 
+    lhs, rhs = t
+    return ",".join(to_set(lhs)) + " -> " + ",".join(to_set(rhs))
 
 def fds_to_str(fds): return "\n\t".join(map(fd_to_str, fds))
 
@@ -29,7 +31,9 @@ def print_setup(A, fds):
   print("FDs = \t" + fds_to_str(fds))
 
 """Does the FD apply"""
-def fd_applies(x, (lhs,rhs)): return to_set(lhs).issubset(x)
+def fd_applies(x, t): 
+    lhs, rhs = t
+    return to_set(lhs).issubset(x)
 
 def compute_closure(x, fds, verbose=False):
     bChanged = True        # We will repeat until there are no changes.
