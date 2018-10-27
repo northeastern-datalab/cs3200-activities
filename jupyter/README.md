@@ -8,7 +8,7 @@ If you have trouble with these instructions, please post your issues with screen
 
 
 ## Acknowledgements 
-We have adapted these notebooks from [Chris Re](https://cs.stanford.edu/people/chrismre/) and [Peter Bailis](http://www.bailis.org/)).
+We have adapted these notebooks from [Chris Re](https://cs.stanford.edu/people/chrismre/) and [Peter Bailis](http://www.bailis.org/) - many thanks to them!
 
 ## Step 1: Install Git and Pip
 
