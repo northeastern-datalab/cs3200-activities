@@ -12,9 +12,9 @@ We have adapted these notebooks from [Chris Re](https://cs.stanford.edu/people/c
 
 ## Step 1: Install Git and Pip
 
-1. Install [Git](https://git-scm.com/downloads).  
- Git is a version control system that allows us to distribute and collaboratively edit files.  
- Check out this simple [guide](https://rogerdudler.github.io/git-guide/) if you are not familiar with Git.
+1. Install [Git](https://git-scm.com/downloads). Git is a version control system that allows us to distribute and collaboratively edit files.  
+ 
+	Check out this simple [guide](https://rogerdudler.github.io/git-guide/) if you are not familiar with Git.
 
 2. Install [pip](https://pip.pypa.io/en/stable/installing/), a package manager for python.
 
@@ -33,26 +33,22 @@ We have adapted these notebooks from [Chris Re](https://cs.stanford.edu/people/c
 	cd cs3200-activities/jupyter
 	pip install -r requirements.txt
 	```
- Depending on your folder permissions, you may need to use `sudo pip install ...`.  
- If you would like to install only for the current user, use `pip install --user ...`
 
-3. Be sure you now have `jupyter` command available in your environment.
+	Depending on your folder permissions, you may need to use `sudo pip install ...`.  
 
- Try the following:
-```bash
-jupyter --version
-```
+	If you would like to install only for the current user, use `pip install --user ...`
 
- If you get a command not found error, you may simply need to adjust your environment variables.
+3. Be sure you now have `jupyter` command available in your environment. Try `jupyter --version`
 
-* On Mac/Linux, your `$PATH` variable should include the location where `pip` installs libraries.  
- If it does not, you may need to add a line like the following to your `~/.bashrc` file (Note - the folder locations mentioned here may be different on your machine!):
+	If you get a command not found error, you may simply need to adjust your environment variables.
 
-```bash
-export PATH=${PATH}:/usr/local/bin
-```
+    * On Mac/Linux, your `$PATH` variable should include the location where `pip` installs libraries.  
+    	If it does not, you may need to add a line like the following to your `~/.bashrc` file (Note - the folder locations mentioned here may be different on your machine!):
+		```bash
+		export PATH=${PATH}:/usr/local/bin
+		```
 
-* On Windows, you may need to adjust your environment variables in a similar manner.
+    * On Windows, you may need to adjust your environment variables in a similar manner.
 
 ## Step 3: Launch Jupyter
 
