@@ -39,9 +39,12 @@ We have adapted these notebooks from [Chris Re](https://cs.stanford.edu/people/c
 
 	If you obtained a zip file, it will have the git branch in its name, so you should instead use ("`cd cs3200-activities-master`")
 
-	Depending on your folder permissions, you may need to use `sudo pip install ...`.  
+	Depending on your folder permissions, and your Python installation you may need to use `sudo pip install ...`, or use `pip3` instead of `pip`.
 
-	If you would like to install only for the current user, use `pip install --user ...`
+	If you would like to install only for the current user, you can use `pip install --user ...`
+
+	*** If you get an error relating to `BUILDING MATPLOTLIB... the following required packages can not be built: freetype`, you are missing some system libraries required for compiling Matplotlib. The easiest fix is to use [Homebrew](https://brew.sh/), and do `brew install pkg-config freetype`, and then re-try this step with `pip`.
+
 
 3. Be sure you now have `jupyter` command available in your environment. Try `jupyter --version`
 
