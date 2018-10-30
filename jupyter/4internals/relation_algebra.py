@@ -8,12 +8,12 @@ def generate_dict(t, schema_index):
     d = dict()
     for x in schema_index.keys():
         d[x] = t[schema_index[x]]
-    return tuple(sorted(list(d.iteritems())))
+    return tuple(sorted(list(d.items())))
 
 # Schema-aware comparison
 def compare_results(x,y):
     # First check the results are the same tupe.
-    if set(x.schema) <> set(y.schema): return False
+    if set(x.schema) != set(y.schema): return False
 
     # Now, we want to compare them as sets but the attribute orders may be different,
     # so we turn each tuple into a dictionary
@@ -163,7 +163,7 @@ class NJoin(OpBase):
         s2          = set(op2.schema)
         self.common = s1.intersection(s2)
         self.op_str = "$\Join_{{{0}}}$".format(','.join(self.common))
-        OpBase.__init__(self, op1.schema + filter(lambda x : x not in self.common, op2.schema), [op1,op2]) 
+        OpBase.__init__(self, op1.schema + list(filter(lambda x : x not in self.common, op2.schema)), [op1,op2])
         self.count_reads = True
         
     def __iter__(self):

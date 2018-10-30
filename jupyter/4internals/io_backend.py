@@ -26,7 +26,7 @@ class Page:
     self._i = 0
 
   def size(self, count_empty=False):
-    return len(filter(lambda e : e or count_empty, self._data))
+    return len(list(filter(lambda e : e or count_empty, self._data)))
   
   def get(self, i):
     if i < self.size:
@@ -230,7 +230,7 @@ class Buffer:
     self._buffer_stale = [None]*self.buffer_size
   
   def buffer_is_full(self):
-    return len(filter(lambda x : x is None, self._buffer)) == 0
+    return len(list(filter(lambda x : x is None, self._buffer))) == 0
 
   def get_empty_buffer_slot(self):
     for i in range(len(self._buffer)):
@@ -249,7 +249,7 @@ class Buffer:
     return i + 1 
 
   def get_file_size(self, file_id, count_empty=False):
-    return len(filter(lambda p : p or count_empty, self._disk[file_id]))
+    return len(list(filter(lambda p : p or count_empty, self._disk[file_id])))
 
   def _update_log(self, op, page, buffer_idx, old_location, new_location, keep_old, file_id=None, show=True, tooltip_content=None):
     fid = page.file_id if page else file_id
@@ -271,7 +271,7 @@ class Buffer:
 
   def print_log(self):
     for l in self._log:
-      print '%s : id=(%s,%s) : %s -> %s [bi=%s]' % (l['operation'], l['file'], l['page'], l['oldLocation'], l['newLocation'], l['bufferIndex'])
+      print('%s : id=(%s,%s) : %s -> %s [bi=%s]' % (l['operation'], l['file'], l['page'], l['oldLocation'], l['newLocation'], l['bufferIndex']))
 
   def get_buffer_page(self, idx):
     """Returns page & buffer index of specific page by buffer order"""
@@ -297,7 +297,7 @@ class Buffer:
     Sends tooltip updates to log for a separate tooltip to indicate e.g. LRU/MRU
     """
     if remove_idx is not None:
-      self._buffer_order = filter(lambda i : i != remove_idx, self._buffer_order)
+      self._buffer_order = list(filter(lambda i : i != remove_idx, self._buffer_order))
     if add_idx is not None:
       self._buffer_order.append(add_idx)
     if self.buffer_queue_indicator:
@@ -494,7 +494,7 @@ class Buffer:
     """.format(chart_id)
 
     # Dump log to json file
-    with open('pagesLog.json', 'wb') as f:
+    with open('pagesLog.json', 'w') as f:
       json.dump(self._log, f)
 
     # Create animation in js/d3
@@ -526,7 +526,7 @@ class Buffer:
     """
     self._diff_log_start = len(self._log)
     if reset_io:
-      for k in self._io_count.iterkeys():
+      for k in self._io_count:
         self._io_count[k] = 0
 
 def js_file_with_configs(fpath, configs):
@@ -534,12 +534,12 @@ def js_file_with_configs(fpath, configs):
   Take in a js filepath and a dictionary of configs to be passed in as global vars
   """
   js = ''
-  for k,v in configs.iteritems():
+  for k,v in configs.items():
     if type(v) == str:
       js += 'var %s = "%s"\n' % (k,v)
     elif type(v) in [int, float]:
       js += 'var %s = %s\n' % (k,v)
-  js += open(fpath, 'rb').read()
+  js += open(fpath, 'r').read()
   return js
 
 def new_rand_file(b, r, l, sorted=False):

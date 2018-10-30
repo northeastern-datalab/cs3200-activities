@@ -22,7 +22,7 @@ class TransactionManager:
 
     # Set initial values in global / RAM
     if initial_main_vals:
-      for var, val in initial_main_vals.iteritems():
+      for var, val in initial_main_vals.items():
         self._state[var][0] = val
 
     # Start with an initial state
@@ -86,13 +86,13 @@ class TransactionManager:
 
   def print_log(self):
     for line in self._log:
-      print line
+      print(line)
 
   def display(self, chart_num=0, configs_in={}):
     """Display the TXN viewer based on full current log"""
 
     # dump input txns to jsonfor transfer to js
-    with open('txnLog.json', 'wb') as f:
+    with open('txnLog.json', 'w') as f:
       json.dump(self._log, f)
 
     # merge default configs
@@ -101,10 +101,10 @@ class TransactionManager:
       'numThreads': self.n_threads
     }
     config.update(configs_in)
-    js = ''.join('var %s = %s\n' % (k,v) for k,v in config.iteritems())
+    js = ''.join('var %s = %s\n' % (k,v) for k,v in config.items())
 
     # JS
-    js += open('txnViewer.js', 'rb').read()
+    js += open('txnViewer.js', 'r').read()
     js_libs = [
       '//d3js.org/d3.v3.min.js', 
       'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js',
