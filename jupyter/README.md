@@ -10,22 +10,25 @@ If you have trouble with these instructions, please post your issues with screen
 ## Acknowledgements 
 We have adapted these notebooks from [Chris Re](https://cs.stanford.edu/people/chrismre/) and [Peter Bailis](http://www.bailis.org/) - many thanks to them!
 
-## Step 1: Install Git and Pip
+## Step 1: GitHub, Git, and Pip
 
-1. Install [Git](https://git-scm.com/downloads). Git is a version control system that allows us to distribute and collaboratively edit files.  
- 
-	Check out this simple [guide](https://rogerdudler.github.io/git-guide/) if you are not familiar with Git.
+1. To obtain our class files from GitHub, you have two choices. 
+	1. You can install [Git](https://git-scm.com/downloads). Git is a version control system that allows us to distribute and collaboratively edit files. Using Git lets you easily retrieve the latest updates that we post. (Check out this simple [guide](https://rogerdudler.github.io/git-guide/) if you are not familiar with Git.)
+
+	2. You can download a zip file from the repository on GitHub. Be aware that you will have to be careful re-download the zip file whenever we post updates.
 
 2. Install [pip](https://pip.pypa.io/en/stable/installing/), a package manager for python.
 
 ## Step 2: Install Jupyter Notebook and libraries
 
-1. Check out our class activities repository to your local computer.
+1. Check out our class activities repository to your local computer. As mentioned, either use git to obtain the repo...
 
 	```bash
 	# From a suitable local directory...
 	git clone https://github.com/northeastern-datalab/cs3200-activities.git
 	```
+
+	... or obtain a zip file of the repo and expand it. 
 
 2. To install necessary python dependencies:
 
@@ -33,6 +36,8 @@ We have adapted these notebooks from [Chris Re](https://cs.stanford.edu/people/c
 	cd cs3200-activities/jupyter
 	pip install -r requirements.txt
 	```
+
+	If you obtained a zip file, it will have the git branch in its name, so you should instead use ("`cd cs3200-activities-master`")
 
 	Depending on your folder permissions, you may need to use `sudo pip install ...`.  
 
@@ -59,6 +64,4 @@ We have adapted these notebooks from [Chris Re](https://cs.stanford.edu/people/c
 	jupyter notebook
 	```
 
-2. To avoid overwriting your local changes, be sure to practice Git.  
- You can make yourself a local branch to keep track of your changes.  
- If you are not comfortable with Git, you can save your modified copy of these files elsewhere on your computer.
+2. Be sure to save any changes you wish to keep. If you are using Git, you could make yourself a local branch and merge the changes we push to the master branch. Alternatively, you can save useful code snippets and modified files somewhere else on your local computer. 
