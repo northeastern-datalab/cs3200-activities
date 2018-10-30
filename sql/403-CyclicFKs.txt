@@ -1,0 +1,65 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://github.com/northeastern-datalab/cs3200/
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS R CASCADE;
+DROP TABLE IF EXISTS S CASCADE;
+
+
+
+---------------------------
+-- Create the tables
+--------------------------- 
+
+create table R ( 
+	rid int PRIMARY KEY,
+	A int); 
+
+create table S ( 
+	sid int PRIMARY KEY, 
+	B int,
+	FOREIGN KEY (B) REFERENCES R DEFERRABLE INITIALLY DEFERRED); -- constraint will be enforced only at tend of a transaction
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO R VALUES ('1', '11'); 
+INSERT INTO S VALUES ('11', '1'); 
+
+
+---------------------------
+-- Add second FK
+---------------------------
+
+ALTER TABLE R
+ADD FOREIGN KEY (A) REFERENCES S  DEFERRABLE INITIALLY DEFERRED;
+
+
+
+---------------------------
+-- Failing insert
+---------------------------
+
+
+BEGIN;
+	INSERT INTO R VALUES ('2', '22'); 
+	INSERT INTO S VALUES ('22', '2'); 
+COMMIT;
+
+
+
+select * from R;
+
+---------------------------
+-- If something goes wrong
+---------------------------
+-- ABORT TRANSACTION;
