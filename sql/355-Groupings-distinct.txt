@@ -1,0 +1,35 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://github.com/northeastern-datalab/cs3200/
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS T;
+
+
+
+-------------------------
+-- Create the tables
+-------------------------
+
+create table T ( 
+	A varchar(20), 
+	B int); 
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO T VALUES ('a', 1); 
+INSERT INTO T VALUES ('a', 2); 
+INSERT INTO T VALUES ('b', 3); 
+INSERT INTO T VALUES ('c', 4); 
+INSERT INTO T VALUES ('c', 5); 
+INSERT INTO T VALUES ('c', 5); 

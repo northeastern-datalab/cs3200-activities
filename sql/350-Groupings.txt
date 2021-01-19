@@ -1,0 +1,36 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://github.com/northeastern-datalab/cs3200/
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS Person;
+
+
+
+-------------------------
+-- Create the tables
+-------------------------
+
+create table Person ( 
+	L varchar(20), 
+	F varchar(20),
+	M varchar(20),		
+	V int); 
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO Person VALUES ('Smith', 'Alice', 'C.', 1); 
+INSERT INTO Person VALUES ('Smith', 'Alice', NULL, 2); 
+INSERT INTO Person VALUES ('Smith', 'Alice', NULL, 3); 
+INSERT INTO Person VALUES ('Smith', 'Bob', NULL, 4); 
+INSERT INTO Person(L, F, V) VALUES ('Tiger', 'Alice', 5);

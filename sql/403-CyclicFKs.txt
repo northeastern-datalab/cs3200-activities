@@ -4,20 +4,16 @@
 -------------------------------------------------------------
 
 
-
 -------------------------
 -- Drop tables if they already exist
 -------------------------
-
 DROP TABLE IF EXISTS R CASCADE;
 DROP TABLE IF EXISTS S CASCADE;
-
 
 
 ---------------------------
 -- Create the tables
 --------------------------- 
-
 create table R ( 
 	rid int PRIMARY KEY,
 	A int); 
@@ -25,13 +21,13 @@ create table R (
 create table S ( 
 	sid int PRIMARY KEY, 
 	B int,
-	FOREIGN KEY (B) REFERENCES R DEFERRABLE INITIALLY DEFERRED); -- constraint will be enforced only at tend of a transaction
+-- 	FOREIGN KEY (B) REFERENCES R); -- constraint will be enforced only at end of a transaction
+	FOREIGN KEY (B) REFERENCES R DEFERRABLE INITIALLY DEFERRED); -- constraint will be enforced only at end of a transaction
 
 
 ---------------------------
 -- Populate the tables
 ---------------------------
-
 INSERT INTO R VALUES ('1', '11'); 
 INSERT INTO S VALUES ('11', '1'); 
 
@@ -39,27 +35,28 @@ INSERT INTO S VALUES ('11', '1');
 ---------------------------
 -- Add second FK
 ---------------------------
-
 ALTER TABLE R
-ADD FOREIGN KEY (A) REFERENCES S  DEFERRABLE INITIALLY DEFERRED;
-
+-- ADD FOREIGN KEY (A) REFERENCES S 
+ADD FOREIGN KEY (A) REFERENCES S DEFERRABLE INITIALLY DEFERRED;
 
 
 ---------------------------
--- Failing insert
+-- Failing inserts
 ---------------------------
+INSERT INTO R VALUES ('2', '22'); -- you get an error message here without "DEFERRABLE INITIALLY DEFERRED", or if you only execute one after the other
+INSERT INTO S VALUES ('22', '2'); 
+
+ABORT TRANSACTION; -- you need to abort, and then continue below
+
+SELECT * FROM R;
 
 
+---------------------------
+-- Two inserts as one transaction
+---------------------------
 BEGIN;
-	INSERT INTO R VALUES ('2', '22'); 
-	INSERT INTO S VALUES ('22', '2'); 
+	INSERT INTO R VALUES ('3', '33'); 
+	INSERT INTO S VALUES ('33', '3'); 
 COMMIT;
 
-
-
-select * from R;
-
----------------------------
--- If something goes wrong
----------------------------
--- ABORT TRANSACTION;
+SELECT * FROM R;

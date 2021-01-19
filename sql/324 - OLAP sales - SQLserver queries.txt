@@ -1,0 +1,91 @@
+-------------------------------------------------------------
+-- Example SQLserver queries for 45881/70455 Modern Data Management
+-- Wolfgang Gatterbauer
+-- v151102
+-------------------------------------------------------------
+
+
+-------------------------------------------------------------
+-- Cube operator
+-------------------------------------------------------------
+
+-- Simple group by query with 12 query results
+
+select item_name, color, sum(quantity) quantity 
+from sales 
+group by item_name, color  
+order by item_name, color;
+
+
+-- Similar query with cube operator and 20 query results 
+
+select item_name, color, sum(quantity) quantity
+from sales
+group by cube(item_name, color)
+order by item_name, color;
+
+
+-- Cube operator for producing all 80 tuples
+
+select item_name, color, clothes_size, sum(quantity) quantity
+from sales
+group by cube(item_name, color, clothes_size)
+order by item_name, color, clothes_size;
+
+
+-- Filtered results (20 results shown on slides)
+
+select item_name, color, clothes_size, sum(quantity) quantity
+from sales
+group by cube(item_name, color, clothes_size)
+having clothes_size is null
+order by item_name, color, clothes_size;
+
+
+-------------------------------------------------------------
+-- Pivot operator
+-------------------------------------------------------------
+
+-- Simple group by query with 12 query results
+
+select item_name, clothes_size, sum(quantity) quantity
+from sales
+group by item_name, clothes_size 
+order by item_name, clothes_size;
+
+
+-- Including Pivot clause
+
+select *
+from sales
+pivot (
+	sum(quantity)
+	for color in (dark,pastel,white) ) piv
+order by item_name;
+
+
+-- Including a color that does not exist
+
+select *
+from sales
+pivot (
+	sum(quantity)
+	for color in (dark,pastel,white,superblue) ) piv
+order by item_name;
+
+
+
+-- Rollup
+
+select *
+from (
+	select item_name, color, sum(quantity) quantity 
+	from sales 
+	group by item_name, color) s
+pivot (
+	sum(quantity)
+	for color in (dark,pastel,white)
+) piv
+order by item_name;
+
+

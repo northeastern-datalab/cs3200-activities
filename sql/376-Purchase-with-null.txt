@@ -1,0 +1,34 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://github.com/northeastern-datalab/cs3200/
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop table if it already exists
+-------------------------
+
+DROP TABLE IF EXISTS T;
+
+
+
+-------------------------
+-- Create the table
+------------------------- 
+
+create table T ( 
+	product char(20), 
+	price int); 
+
+
+
+---------------------------
+-- Populate the table
+--------------------------- 
+
+insert into T values ('Bagel', null); 
+insert into T values ('Bagel', 2); 
+insert into T values ('Banana', 1); 
+insert into T values ('Banana', 2); 
+insert into T values ('Banana', 4); 
