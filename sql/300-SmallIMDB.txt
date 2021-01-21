@@ -1,7 +1,7 @@
 -------------------------------------------------------------
 -- SQL statements to create a small IMDB database in Postgresql ("Small IMDB")
 -- cs3200 Database design
--- https://github.com/northeastern-datalab/cs3200/
+-- https://northeastern-datalab.github.io/cs3200/
 -------------------------------------------------------------
 
 

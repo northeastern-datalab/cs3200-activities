@@ -1,6 +1,6 @@
 -------------------------------------------------------------
 -- cs3200 Database design
--- https://github.com/northeastern-datalab/cs3200/
+-- https://northeastern-datalab.github.io/cs3200/
 -- Database instance and query from Ramakrishnan, Gehrke: Database management systems, 2nd ed (2000)
 -------------------------------------------------------------
 

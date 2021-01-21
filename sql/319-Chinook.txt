@@ -1,7 +1,7 @@
 -------------------------------------------------------------
 -- Chinook variant without quotation marks for cs3200
 -- cs3200 Database design
--- https://github.com/northeastern-datalab/cs3200/
+-- https://northeastern-datalab.github.io/cs3200/
 -------------------------------------------------------------
 
 
