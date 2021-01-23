@@ -11,8 +11,8 @@
 -------------------------
 
 DROP TABLE IF EXISTS Reserves;
-DROP TABLE IF EXISTS Sailors;
-DROP TABLE IF EXISTS Boats;
+DROP TABLE IF EXISTS Sailor;
+DROP TABLE IF EXISTS Boat;
 
 
 
@@ -20,13 +20,13 @@ DROP TABLE IF EXISTS Boats;
 -- Create the tables
 -------------------------
 
-create table Sailors ( 
+create table Sailor ( 
 	sid int PRIMARY KEY, 
 	sname varchar(20), 
 	rating int, 
 	age float); 
 
-create table Boats ( 
+create table Boat ( 
 	bid int PRIMARY KEY, 
 	bname varchar(20), 
 	color varchar(20) ); 
@@ -36,8 +36,8 @@ create table Reserves (
 	bid int, 
 	day date, 
 PRIMARY KEY (sid,bid,day), 
-FOREIGN KEY (sid) REFERENCES Sailors(sid), 
-FOREIGN KEY (bid) REFERENCES Boats(bid) ); 
+FOREIGN KEY (sid) REFERENCES Sailor(sid), 
+FOREIGN KEY (bid) REFERENCES Boat(bid) ); 
 
 
 
@@ -45,21 +45,21 @@ FOREIGN KEY (bid) REFERENCES Boats(bid) );
 -- Populate the tables
 ---------------------------
 
-INSERT INTO Sailors VALUES (22, 'Dustin', 7, 45.0); 
-INSERT INTO Sailors VALUES (29, 'Brutus', 1, 33.0); 
-INSERT INTO Sailors VALUES (31, 'Lubber', 8, 55.0); 
-INSERT INTO Sailors VALUES (32, 'Andy', 8, 25.0); 
-INSERT INTO Sailors VALUES (58, 'Rusty', 10, 35.0); 
-INSERT INTO Sailors VALUES (64, 'Horatio', 7, 35.0); 
-INSERT INTO Sailors VALUES (71, 'Zorba', 10, 16.0); 
-INSERT INTO Sailors VALUES (74, 'Horatio', 9, 35.0); 
-INSERT INTO Sailors VALUES (85, 'Art', 3, 25.5); 
-INSERT INTO Sailors VALUES (95, 'Bob', 3, 63.5); 
+INSERT INTO Sailor VALUES (22, 'Dustin', 7, 45.0); 
+INSERT INTO Sailor VALUES (29, 'Brutus', 1, 33.0); 
+INSERT INTO Sailor VALUES (31, 'Lubber', 8, 55.0); 
+INSERT INTO Sailor VALUES (32, 'Andy', 8, 25.0); 
+INSERT INTO Sailor VALUES (58, 'Rusty', 10, 35.0); 
+INSERT INTO Sailor VALUES (64, 'Horatio', 7, 35.0); 
+INSERT INTO Sailor VALUES (71, 'Zorba', 10, 16.0); 
+INSERT INTO Sailor VALUES (74, 'Horatio', 9, 35.0); 
+INSERT INTO Sailor VALUES (85, 'Art', 3, 25.5); 
+INSERT INTO Sailor VALUES (95, 'Bob', 3, 63.5); 
 
-INSERT INTO Boats VALUES (101, 'Interlake', 'blue'); 
-INSERT INTO Boats VALUES (102, 'Interlake', 'red'); 
-INSERT INTO Boats VALUES (103, 'Clipper', 'green'); 
-INSERT INTO Boats VALUES (104, 'Marine', 'red'); 
+INSERT INTO Boat VALUES (101, 'Interlake', 'blue'); 
+INSERT INTO Boat VALUES (102, 'Interlake', 'red'); 
+INSERT INTO Boat VALUES (103, 'Clipper', 'green'); 
+INSERT INTO Boat VALUES (104, 'Marine', 'red'); 
 
 INSERT INTO Reserves VALUES (22, 101, '10/10/98'); 
 INSERT INTO Reserves VALUES (22, 102, '10/10/98'); 

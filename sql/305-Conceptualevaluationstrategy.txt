@@ -14,6 +14,7 @@ DROP TABLE IF EXISTS S;
 DROP TABLE IF EXISTS T;
 DROP TABLE IF EXISTS T2;
 DROP TABLE IF EXISTS U;
+DROP TABLE IF EXISTS W;
 
 
 
@@ -26,6 +27,7 @@ create table S (a int PRIMARY KEY);
 create table T (a int PRIMARY KEY); 
 create table T2 (a int PRIMARY KEY); 
 create table U (a int PRIMARY KEY); 
+create table W (a int PRIMARY KEY, b int); 
 
 
 
@@ -40,3 +42,6 @@ insert into T values (2);
 insert into U values (2);
 insert into U values (3);
 insert into U values (4);
+insert into W values (2,0);
+insert into W values (3,0);
+insert into W values (4,0);
