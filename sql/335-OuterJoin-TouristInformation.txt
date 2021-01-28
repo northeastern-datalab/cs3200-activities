@@ -1,0 +1,55 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-------------------------------------------------------------
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS Climates;
+DROP TABLE IF EXISTS Accommodations;
+DROP TABLE IF EXISTS Sites;
+
+---------------------------
+-- Create the tables
+---------------------------
+	
+create table Climates ( 
+	Country varchar,
+	Climate varchar); 
+
+create table Accommodations ( 
+	Country varchar,
+	City varchar,
+	Hotel varchar,
+	Stars int); 
+
+create table Sites ( 
+	Country varchar,
+	City varchar,
+	Site varchar); 
+
+
+--------------------------- 
+-- Populate the tables 
+---------------------------
+
+insert into Climates values 
+('Canada', 'diverse'),
+('Bahamas', 'tropical'),
+('UK', 'temperate'); 
+
+insert into Accommodations values 
+('Canada', 'Toronto', 'Plaza', 4),
+('Canada', 'London', 'Ramada', 3),
+('Bahamas', 'Nassau', 'Hilton', null);
+
+insert into Sites values 
+('Canada', 'London', 'Air show'),
+('Canada', null, 'Mount Logan'),
+('UK', 'London', 'Buckingham'),
+('UK', 'London', 'Hyde Park');
+
+
