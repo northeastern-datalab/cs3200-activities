@@ -1,0 +1,57 @@
+-------------------------------------------------------------
+-- cs7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+DROP VIEW IF EXISTS NeuMentors;
+DROP TABLE IF EXISTS Employee;
+
+
+
+---------------------------
+-- Create the tables
+--------------------------- 
+create table Employee ( 
+	name varchar PRIMARY KEY,
+	university varchar,
+	manager varchar REFERENCES Employee(name)); 
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+INSERT INTO Employee VALUES 
+('Cecile', 'Northeastern', NULL),
+('Bob', 'Northeastern', 'Cecile'),
+('Alice', 'Northeastern', 'Bob');
+
+
+
+
+---------------------------
+-- Views and Queries
+---------------------------
+CREATE VIEW NeuMentors AS
+SELECT DISTINCT E1.name,E1.manager
+FROM Employee E1, Employee E2 
+WHERE E1.manager = E2.name
+AND E1.university = 'Northeastern'
+AND E2.university= 'Northeastern';
+
+SELECT DISTINCT N1.name
+FROM NeuMentors N1, NeuMentors N2 
+WHERE N1.manager = N2.name;
+
+SELECT DISTINCT E1.name
+FROM Employee E1, Employee E2, Employee E3, Employee E4
+WHERE E1.manager = E2.name AND E1.manager = E3.name AND E3.manager = E4.name 
+AND E1.university = 'Northeastern' AND E2.university = 'Northeastern'
+AND E3.university = 'Northeastern' AND E4.university = 'Northeastern';
+
+
