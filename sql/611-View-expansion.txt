@@ -1,5 +1,7 @@
 -------------------------------------------------------------
--- cs7240 Principles of scalable data management
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
 -- https://northeastern-datalab.github.io/cs7240/
 -------------------------------------------------------------
 

@@ -1,7 +1,10 @@
 -------------------------------------------------------------
 -- cs3200 Database design
 -- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
 -------------------------------------------------------------
+
 
 
 -------------------------
@@ -11,6 +14,7 @@
 DROP TABLE IF EXISTS Climates;
 DROP TABLE IF EXISTS Accommodations;
 DROP TABLE IF EXISTS Sites;
+
 
 ---------------------------
 -- Create the tables

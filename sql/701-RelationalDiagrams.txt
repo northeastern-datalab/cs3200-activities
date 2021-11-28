@@ -1,0 +1,62 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+DROP TABLE IF EXISTS R CASCADE;
+DROP TABLE IF EXISTS S CASCADE;
+DROP TABLE IF EXISTS T CASCADE;
+DROP TABLE IF EXISTS U CASCADE;
+
+
+---------------------------
+-- Create the tables
+--------------------------- 
+create table R ( 
+	A int,
+	B int,
+	C int); 
+
+create table S ( 
+	A int,
+	B int); 
+
+create table T ( 
+	A int); 
+
+create table U ( 
+	A int); 
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+insert into R values 
+(1,0,1),
+(2,0,2),
+(3,0,3),
+(4,1,4); 
+
+insert into S values 
+(1,0),
+(2,0),
+(3,0),
+(4,0); 
+
+insert into T values 
+(1),
+(2),
+(3),
+(4); 
+
+insert into U values 
+(1); 
+
+

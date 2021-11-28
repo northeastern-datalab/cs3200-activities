@@ -1,0 +1,103 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS R;
+DROP TABLE IF EXISTS S;
+
+
+
+---------------------------
+-- Create the tables
+---------------------------
+
+create table R( 
+	A char(1), 
+	B int,
+	C int); 
+
+create table S( 
+	B int,
+	C int);
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO R VALUES ('a', 0, 2); 
+
+INSERT INTO S VALUES (1, 2); 
+INSERT INTO S VALUES (3, 2); 
+
+
+
+
+
+SELECT DISTINCT R.A
+FROM R
+WHERE not exists
+	(SELECT *
+	FROM S
+	WHERE not exists
+		(SELECT *
+		FROM R AS R2
+		WHERE (R2.B=S.B
+		OR R2.C=S.C)
+		AND R2.A=R.A))
+
+
+SELECT DISTINCT R.A
+FROM R
+WHERE not exists
+	(SELECT *
+	FROM S
+	WHERE not exists
+		(SELECT *
+		FROM R AS R2
+		WHERE (R2.B=S.B
+		AND R2.A=R.A)
+		OR (R2.C=S.C
+		AND R2.A=R.A)))
+		
+		
+SELECT DISTINCT R.A
+FROM R
+WHERE not exists
+	(SELECT *
+	FROM S
+	WHERE not exists
+		(SELECT *
+		FROM R AS R2
+		WHERE R2.B=S.B
+		AND R2.A=R.A)
+	AND not exists
+		(SELECT *
+		FROM R AS R2
+		WHERE R2.C=S.C
+		AND R2.A=R.A))	
+		
+		
+		
+		
+SELECT DISTINCT R.A
+FROM R
+WHERE not exists
+	(SELECT *
+	FROM S
+	WHERE not exists
+		(SELECT *
+		FROM R AS R2
+		WHERE R2.B=S.B
+		AND R2.A=R.A))						
+		

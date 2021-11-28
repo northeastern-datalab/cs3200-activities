@@ -3,8 +3,11 @@ Created on 3/23/2015
 Illustrates nested Loop Join in SQL
 cs3200 Database design
 https://northeastern-datalab.github.io/cs3200/
-__author__ = 'gatt'
+CS 7240 Principles of scalable data management
+https://northeastern-datalab.github.io/cs7240/
+__author__ = 'wolfgang gatterbauer'
 '''
+
 
 print "--- 1st nested loop ---"
 for i in xrange(2):

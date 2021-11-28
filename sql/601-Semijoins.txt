@@ -10,6 +10,7 @@
 -------------------------------------------------------------
 
 
+
 -------------------------
 -- Drop tables if they already exist
 -------------------------
@@ -142,5 +143,22 @@ $func$;
 SELECT * FROM timing()
 
 
+
+
+
+-- select *
+-- into record3
+-- from R natural join
+-- 	(SELECT *
+-- 	FROM
+-- 		(SELECT *
+-- 		FROM S
+-- 		WHERE S.B in
+-- 			(SELECT R.B
+-- 			FROM R)) S2
+-- 	WHERE S2.C in
+-- 		(SELECT T.C
+-- 		FROM T)) S3
+-- natural join T;
 
 

@@ -1,8 +1,11 @@
 -------------------------------------------------------------
--- Chinook variant without quotation marks for cs3200
+-- Chinook variant without quotation marks for cs3200  (January 28, 2018)
 -- cs3200 Database design
 -- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
 -------------------------------------------------------------
+
 
 
 
@@ -15,7 +18,7 @@
    License: http://www.codeplex.com/ChinookDatabase/license
 
 
-Variant without quotation marks for cs3200 (180128)
+Variant without quotation marks for cs3200  (January 28, 2018)
 ********************************************************************************/
 
 
