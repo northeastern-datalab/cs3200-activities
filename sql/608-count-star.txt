@@ -2,11 +2,11 @@
 -- cs7240 Principles of scalable data management
 -- https://northeastern-datalab.github.io/cs7240/
 -- 
--- Minimal example that joins two queries to get top-1:
--- "naive": standard conjunctive queries with limi 1
--- with some cleverer execution strategy
--- Output timing in msec
--- Example: 2908 msec for naive, 4 msec for cleverer execution strategy, on 2016 MacBook Pro
+-- Minimal example that counts the joins across two tables:
+-- "naive": standard conjunctive query with count(*)
+-- "optimized": calculating count(*) for each table, then multiplying the paths
+
+-- Output timing in msec (and count(*))
 -------------------------------------------------------------
 
 
@@ -17,6 +17,8 @@
 
 DROP TABLE IF EXISTS R;
 DROP TABLE IF EXISTS S;
+drop FUNCTION IF EXISTS addTuples();
+drop FUNCTION IF EXISTS timing();
 
 
 ---------------------------
@@ -41,20 +43,26 @@ CREATE OR REPLACE FUNCTION addTuples(
 	Relation_name varchar,
 	Att0 varchar, 
 	Att1 varchar, 
-	n int)
+	n int,
+	m int)
 RETURNS void 
 LANGUAGE plpgsql
 as
 $func$
 DECLARE
 	i int;
+	j int;
 
 BEGIN
-i = 1;
+j = 0;
 
-WHILE i <= n LOOP
-	EXECUTE 'INSERT INTO ' || Relation_name || '(' || Att1 || ',' || Att0 || ', W) VALUES ('  || i || ', 0 ,' || i || ');';
-    i := i + 1;
+WHILE j < m LOOP
+	i = 1;
+	WHILE i <= n LOOP
+		EXECUTE 'INSERT INTO ' || Relation_name || '(' || Att1 || ',' || Att0 || ', W) VALUES ('  || i || ','  || j || ',' || i || ');';
+	    i := i + 1;
+	END LOOP;
+	j := j + 1;
 END LOOP;
 
 END;
@@ -64,8 +72,9 @@ $func$;
 ---------------------------
 -- Populate the tables
 ---------------------------
-SELECT addTuples('R','B','A', 2000);
-SELECT addTuples('S','B','C', 2000);
+SELECT addTuples('R','B','A', 1000, 1);
+SELECT addTuples('S','B','C', 1000, 1);
+
 
 
 
@@ -73,7 +82,7 @@ SELECT addTuples('S','B','C', 2000);
 -- Create function to time the queries
 ---------------------------
 CREATE OR REPLACE FUNCTION timing()
-RETURNS TABLE(naive_msec int, with_SJ_msec int)
+RETURNS TABLE(naive_msec int, optimized_msec int, count_naive varchar, count_optimized varchar)
 LANGUAGE plpgsql
 as
 
@@ -85,6 +94,8 @@ DECLARE
 	EndTime timestamptz;	
 	record1 record;
 	record2 record;	
+	count1 varchar;
+	count2 varchar;	
 
 BEGIN
 
@@ -93,46 +104,40 @@ StartTime := clock_timestamp();
 	---------------------------
 	-- Query 1
 	---------------------------
-	SELECT   A, R.B, S.C,
-	        	R.W + S.W as weight
+	SELECT   count(*) C
 	INTO record1				
 	FROM     R, S
-	WHERE	R.B=S.B
-	ORDER BY weight ASC
-	LIMIT	1;
+	WHERE	R.B=S.B;
 
 EndTime := clock_timestamp();
 time1 :=  (1000*(extract(epoch from EndTime)-extract(epoch from StartTime)))::int;
+
+count1 := record1;
 
 StartTime := clock_timestamp();
 
 	---------------------------
 	-- Query 2
 	---------------------------
-	SELECT R.A, X.B, S.C, X.W as weight
+	SELECT SUM(C) as C
 	INTO record2
-	FROM R, S,
-		(SELECT T1.B, W1, W2, W1+W2 W
+	FROM 
+		(SELECT T1.B, C1, C2, C1*C2 C
 		FROM
-			(SELECT B, MIN(W) W1
+			(SELECT B, COUNT(*) C1
 			FROM R
 			GROUP BY B) T1,
-			(SELECT B, MIN(W) W2
+			(SELECT B, COUNT(*) C2
 			FROM S
 			GROUP BY B) T2
-		WHERE T1.B = T2.B
-		ORDER BY W ASC
-		LIMIT 1) X
-	WHERE X.B = R.B
-	AND X.W1 = R.W
-	AND X.B = S.B
-	AND X.W2 = S.W
-	LIMIT	1;	
+		WHERE T1.B = T2.B) X;	
 	
 EndTime := clock_timestamp();
 time2 :=  (1000*(extract(epoch from EndTime)-extract(epoch from StartTime)))::int;
 
-RETURN QUERY SELECT time1, time2;
+count2 := record2;
+
+RETURN QUERY SELECT time1, time2, count1, count2;
 
 END;
 $func$;
@@ -141,7 +146,7 @@ $func$;
 ---------------------------
 -- Run the timing experiment
 ---------------------------
-SELECT * FROM timing()
+SELECT * FROM timing();
 
 
 
