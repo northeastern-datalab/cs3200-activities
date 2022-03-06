@@ -1,0 +1,40 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS R;
+
+
+
+-------------------------
+-- Create the tables
+-------------------------
+
+create table R ( 
+	A varchar, 
+	B varchar,
+	C varchar); 
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO R VALUES ('a', 'b', 'c'); 
+INSERT INTO R VALUES ('a', 'b', 'c'); 
+INSERT INTO R VALUES ('d', 'b', 'e'); 
+INSERT INTO R VALUES ('d', 'b', 'e'); 
+INSERT INTO R VALUES ('d', 'b', 'e'); 
+INSERT INTO R VALUES ('d', 'b', 'e'); 
+INSERT INTO R VALUES ('d', 'b', 'e'); 
+INSERT INTO R VALUES ('f', 'g', 'e'); 
