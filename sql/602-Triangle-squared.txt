@@ -1,0 +1,151 @@
+-------------------------------------------------------------
+-- cs7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- 
+-- Triangle query with one single query result but quadratic run time
+-- "naive": standard natural join
+-- "partitioned": first partitions the table into heavy and light, then runs two queries
+-- Output timing in msec
+--
+-- m+2 domain size, 2m+1 tuples per relation
+
+-- Example: 1756 msec for naive, 5 msec for with SJ, on 2016 MacBook Pro
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+DROP TABLE IF EXISTS R CASCADE;
+
+
+---------------------------
+-- Create the tables
+--------------------------- 
+create table R ( 
+	A int,
+	B int); 
+
+
+---------------------------
+-- Create function to populate the tables
+---------------------------
+CREATE OR REPLACE FUNCTION addTuples(	
+	Relation_name varchar,
+	Att0 varchar, 
+	Att1 varchar, 
+	m int)
+RETURNS void 
+LANGUAGE plpgsql
+as
+$func$
+DECLARE
+	i int;
+
+BEGIN
+i = 1;
+
+WHILE i <= m LOOP
+	EXECUTE 'INSERT INTO ' || Relation_name || '(' || Att1 || ',' || Att0 || ') VALUES (0,'  || i ||  ');';
+	EXECUTE 'INSERT INTO ' || Relation_name || '(' || Att1 || ',' || Att0 || ') VALUES ('  || i ||  ',0);';
+    i := i + 1;
+END LOOP;
+
+EXECUTE 'INSERT INTO ' || Relation_name || '(' || Att1 || ',' || Att0 || ') VALUES (-1,-1);';
+
+END;
+$func$;
+
+
+---------------------------
+-- Populate the table
+---------------------------
+SELECT addTuples('R','A','B', 2000);
+
+
+---------------------------
+-- Create function to time the queries
+---------------------------
+CREATE OR REPLACE FUNCTION timing()
+RETURNS TABLE(naive_msec int, with_SJ_msec int)
+LANGUAGE plpgsql
+as
+
+$func$
+DECLARE
+	time1 int;
+	time2 int;	
+	StartTime timestamptz;
+	EndTime timestamptz;	
+	record1 record;
+	record2 record;	
+
+BEGIN
+
+StartTime := clock_timestamp();
+
+	---------------------------
+	-- Query 1
+	---------------------------
+	select count(*)
+	into record1
+	from R R1, R R2, R R3
+	where R1.B=R2.A
+	and R2.B=R3.A
+	and R3.B=R1.A;
+
+EndTime := clock_timestamp();
+time1 :=  (1000*(extract(epoch from EndTime)-extract(epoch from StartTime)))::int;
+
+StartTime := clock_timestamp();
+
+	---------------------------
+	-- Query 2
+	---------------------------
+	With Cutoff as
+		(select sqrt(count(*)) as C from R),
+	DomainH as
+		(select R.A from R
+		group by R.A
+		having count(*) > (Select C from Cutoff)),
+	RH as
+		(SELECT R.A, R.B
+		FROM R, DomainH
+		WHERE R.A=DomainH.A),
+	RL as
+		(select * from R
+		Except
+		select * from RH)
+	select count(*) into record2
+	from
+		(select T.A, T.B, T.C
+		from 	(select RH.A, RH.B, R2.B as C
+			from RH, R R2
+			where RH.B = R2.A) T, R R3
+		where T.A = R3.B and T.C = R3.A
+		union
+		select T.A, T.B, T.C
+		from 	(select RL.A, RL.B, R3.A as C
+			from RL, R R3
+			where RL.A = R3.B) T, R R2
+		where T.B = R2.A and T.C = R2.B) X;
+	
+	
+	
+EndTime := clock_timestamp();
+time2 :=  (1000*(extract(epoch from EndTime)-extract(epoch from StartTime)))::int;
+
+RETURN QUERY SELECT time1, time2;
+
+END;
+$func$;
+
+
+---------------------------
+-- Run the timing experiment
+---------------------------
+SELECT * FROM timing()
+
+
+
