@@ -1,0 +1,37 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS R;
+DROP TABLE IF EXISTS S;
+
+
+
+-------------------------
+-- Create tables
+-------------------------
+
+create table R (a int PRIMARY KEY); 
+create table S (a int PRIMARY KEY); 
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+insert into R values (1);
+insert into R values (3);
+insert into R values (5);
+insert into S values (2);
+insert into S values (3);
+insert into S values (4);

@@ -1,0 +1,117 @@
+-------------------------------------------------------------
+-- cs7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- 
+-- Minimal example that times two identical queries:
+-- "naive": standard natural join
+-- "with SJ": first performs a simulated SJ-reduction, then runs the query on the reduced data
+-- Output timing in msec
+-- Example: 1320 msec for n=50, 17436 msec = n=100 (2 x domain size, 4 x relational size, 16 x output size, but 64 x intermediate size if poorly done)
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+DROP TABLE IF EXISTS R CASCADE;
+DROP TABLE IF EXISTS T CASCADE;
+DROP TABLE IF EXISTS S CASCADE;
+
+
+---------------------------
+-- Create the tables
+--------------------------- 
+create table R ( 
+	A int,
+	B int); 
+
+create table S ( 
+	B int,
+	C int); 
+
+create table T ( 
+	C int, 
+	D int);
+
+
+---------------------------
+-- Create function to populate the tables
+---------------------------
+CREATE OR REPLACE FUNCTION addTuples(	
+	Relation_name varchar,
+	n int)
+RETURNS void 
+LANGUAGE plpgsql
+as
+$func$
+DECLARE
+	i int;
+	j int;
+
+BEGIN
+i = 0;
+
+WHILE i < n LOOP
+   j = 0;   
+   WHILE j < n LOOP
+	EXECUTE 'INSERT INTO ' || Relation_name || ' VALUES ('  || i || ','  || j ||  ');';
+   j := j + 1;
+   END LOOP;
+i := i + 1;
+END LOOP;
+END;
+$func$;
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+SELECT addTuples('R', 50);
+SELECT addTuples('S', 50);
+SELECT addTuples('T', 50);
+
+
+---------------------------
+-- Create function to time the queries
+---------------------------
+CREATE OR REPLACE FUNCTION timing()
+RETURNS TABLE(timing_msec int)
+LANGUAGE plpgsql
+as
+
+$func$
+DECLARE
+	time1 int;
+	StartTime timestamptz;
+	EndTime timestamptz;	
+	record1 record;
+
+BEGIN
+
+StartTime := clock_timestamp();
+
+	---------------------------
+	-- Query 1
+	---------------------------
+	select DISTINCT R.A, T.D
+	into record1
+	from R natural join S natural join T;
+
+EndTime := clock_timestamp();
+time1 :=  (1000*(extract(epoch from EndTime)-extract(epoch from StartTime)))::int;
+
+
+RETURN QUERY SELECT time1;
+
+END;
+$func$;
+
+
+---------------------------
+-- Run the timing experiment
+---------------------------
+SELECT * FROM timing()
+
+
+

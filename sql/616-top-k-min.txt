@@ -93,13 +93,10 @@ StartTime := clock_timestamp();
 	---------------------------
 	-- Query 1
 	---------------------------
-	SELECT   A, R.B, S.C,
-	        	R.W + S.W as weight
+	SELECT min(R.W + S.W) as weight
 	INTO record1				
-	FROM     R, S
-	WHERE	R.B=S.B
-	ORDER BY weight ASC
-	LIMIT	1;
+	FROM R, S
+	WHERE R.B=S.B;
 
 EndTime := clock_timestamp();
 time1 :=  (1000*(extract(epoch from EndTime)-extract(epoch from StartTime)))::int;
@@ -109,25 +106,17 @@ StartTime := clock_timestamp();
 	---------------------------
 	-- Query 2
 	---------------------------
-	SELECT R.A, X.B, S.C, X.W as weight
-	INTO record2
-	FROM R, S,
-		(SELECT T1.B, W1, W2, W1+W2 W
-		FROM
-			(SELECT B, MIN(W) W1
-			FROM R
-			GROUP BY B) T1,
-			(SELECT B, MIN(W) W2
-			FROM S
-			GROUP BY B) T2
-		WHERE T1.B = T2.B
-		ORDER BY W ASC
-		LIMIT 1) X
-	WHERE X.B = R.B
-	AND X.W1 = R.W
-	AND X.B = S.B
-	AND X.W2 = S.W
-	LIMIT	1;	
+	SELECT min(W1+W2) as weight
+	INTO record2	
+	FROM
+		(SELECT B, MIN(W) W1
+		FROM R
+		GROUP BY B) T1,
+		(SELECT B, MIN(W) W2
+		FROM S
+		GROUP BY B) T2
+	WHERE T1.B = T2.B;
+
 	
 EndTime := clock_timestamp();
 time2 :=  (1000*(extract(epoch from EndTime)-extract(epoch from StartTime)))::int;
