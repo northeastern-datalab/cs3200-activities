@@ -1,11 +1,12 @@
 -------------------------------------------------------------
 -- cs7240 Principles of scalable data management
 -- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
 -- 
 -- Minimal example that counts the joins across two tables:
 -- "naive": standard conjunctive query with count(*)
 -- "optimized": calculating count(*) for each table, then multiplying the paths
-
+--
 -- Output timing in msec (and count(*))
 -------------------------------------------------------------
 

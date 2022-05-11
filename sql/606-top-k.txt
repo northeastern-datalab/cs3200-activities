@@ -1,9 +1,10 @@
 -------------------------------------------------------------
 -- cs7240 Principles of scalable data management
 -- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
 -- 
 -- Minimal example that joins two queries to get top-1:
--- "naive": standard conjunctive queries with limi 1
+-- "naive": standard conjunctive queries with limit 1
 -- with some cleverer execution strategy
 -- Output timing in msec
 -- Example: 2908 msec for naive, 4 msec for cleverer execution strategy, on 2016 MacBook Pro

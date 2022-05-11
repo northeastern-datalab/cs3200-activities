@@ -1,6 +1,7 @@
 -------------------------------------------------------------
 -- cs7240 Principles of scalable data management
 -- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
 -- 
 -- Triangle query with one single query result but quadratic run time
 -- "naive": standard natural join

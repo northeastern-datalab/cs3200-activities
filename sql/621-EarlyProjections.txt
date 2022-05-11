@@ -1,6 +1,7 @@
 -------------------------------------------------------------
 -- cs7240 Principles of scalable data management
 -- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
 -- 
 -- Minimal example that times two identical queries:
 -- "naive": standard natural join

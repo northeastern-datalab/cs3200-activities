@@ -1,8 +1,9 @@
 -------------------------------------------------------------
 -- cs7240 Principles of scalable data management
 -- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
 -- 
--- Minimal example that joins two queries to get top-1:
+-- Minimal example that joins two queries to get the value for top-1:
 -- "naive": standard conjunctive queries with limi 1
 -- with some cleverer execution strategy
 -- Output timing in msec
