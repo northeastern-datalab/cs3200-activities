@@ -3,7 +3,7 @@
 -- https://northeastern-datalab.github.io/cs7240/
 -- Wolfgang Gatterbauer
 -- 
--- Example database instance for Yannakakis example
+-- Example database instance for Yannakakis example with weights
 -------------------------------------------------------------
 
 
@@ -81,14 +81,6 @@ insert into W values ('f2','a2','b2',1);
 ---------------------------
 -- Queries
 ---------------------------
-
-
-SELECT R.x, R.y, S.z, S.v, T.p, W.u
-FROM R CROSS JOIN S
-JOIN T on R.x=T.x and R.y=T.y
-JOIN U on T.y = U.y
-JOIN W on T.x=W.x and T.y=W.y;
-
 
 SELECT R.x, R.y, S.z, S.v, T.p, W.u
 FROM R, S, T, U, W

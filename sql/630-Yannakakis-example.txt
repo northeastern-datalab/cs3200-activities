@@ -1,0 +1,98 @@
+-------------------------------------------------------------
+-- cs7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
+-- 
+-- Example database instance for Yannakakis example
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS R;
+DROP TABLE IF EXISTS S;
+DROP TABLE IF EXISTS T;
+DROP TABLE IF EXISTS U;
+DROP TABLE IF EXISTS W;
+
+
+---------------------------
+-- Create the tables
+---------------------------
+
+create table R ( 
+	x varchar,
+	y varchar); 
+
+create table S ( 
+	z varchar,
+	v varchar); 
+
+create table T ( 
+	p varchar,
+	x varchar,
+	y varchar); 
+
+create table U ( 
+	y varchar); 
+
+create table W ( 
+	u varchar,
+	x varchar,
+	y varchar); 
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+insert into R values ('a1','b1');
+insert into R values ('a1','b2');
+insert into R values ('a4','b6');
+
+insert into S values ('c1','d1');
+insert into S values ('c1','d2');
+insert into S values ('c4','d6');
+
+insert into T values ('e1','a1','b1');
+insert into T values ('e1','a1','b2');
+insert into T values ('e2','a2','b3');
+insert into T values ('e3','a1','b4');
+insert into T values ('e3','a3','b1');
+
+insert into U values ('b1');
+insert into U values ('b2');
+insert into U values ('b3');
+
+insert into W values ('f1','a1','b1');
+insert into W values ('f1','a1','b2');
+insert into W values ('f2','a1','b2');
+insert into W values ('f2','a2','b2');
+
+
+---------------------------
+-- Queries
+---------------------------
+
+SELECT x, y, z, v, p, u
+FROM R NATURAL JOIN S
+NATURAL JOIN T
+NATURAL JOIN U
+NATURAL JOIN W;
+
+
+SELECT R.x, R.y, S.z, S.v, T.p, W.u
+FROM R CROSS JOIN S
+JOIN T on R.x=T.x and R.y=T.y
+JOIN U on T.y = U.y
+JOIN W on T.x=W.x and T.y=W.y;
+
+
+SELECT R.x, R.y, S.z, S.v, T.p, W.u
+FROM R, S, T, U, W
+WHERE R.x=T.x and R.y=T.y 
+and T.y = U.y
+and T.x=W.x and T.y=W.y;
