@@ -1,0 +1,62 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS Purchase;
+DROP TABLE IF EXISTS Product;
+DROP TABLE IF EXISTS Company;
+
+
+
+---------------------------
+-- Create the tables
+---------------------------
+
+create table Company ( 
+	CName char(20) PRIMARY KEY, 
+	StockPrice int, 
+	Country char(20) ); 
+
+create table Product ( 
+	PName char(20), 
+	Price decimal(9, 2), 
+	Category char(20), 
+	Manufacturer char(20), 
+PRIMARY KEY (PName), 
+FOREIGN KEY (Manufacturer) REFERENCES Company(CName) ); 
+
+create table Purchase ( 
+	PName char(20), 
+	buyer char(20), 
+	pudate date, 
+FOREIGN KEY (pname) REFERENCES Product); 
+
+
+
+--------------------------- 
+-- Populate the tables 
+---------------------------
+
+insert into Company values ('GizmoWorks', 25, 'USA'); 
+insert into Company values ('Canon', 65, 'Japan'); 
+insert into Company values ('Hitachi', 15, 'Japan'); 
+
+insert into Product values ('Gizmo', 19.99, 'Gadgets', 'GizmoWorks'); 
+insert into Product values ('PowerGizmo', 29.99, 'Gadgets', 'GizmoWorks'); 
+insert into Product values ('SingleTouch', 149.99, 'Photography', 'Canon'); 
+insert into Product values ('MultiTouch', 203.99, 'Household', 'Hitachi'); 
+
+insert into Purchase values ('SingleTouch', 'Joe B', '1/1/2018'); 
+insert into Purchase values ('MultiTouch', 'Joe B', '1/2/2018'); 
+insert into Purchase values ('MultiTouch', 'Joe B', '1/3/2018'); 
+
