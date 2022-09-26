@@ -1,0 +1,52 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS Product;
+DROP TABLE IF EXISTS Company;
+
+
+
+---------------------------
+-- Create the tables
+---------------------------
+
+create table Company ( 
+	cid int PRIMARY KEY, 
+	cname varchar(20), 
+	StockPrice int, 
+	Country char(20) ); 
+
+create table Product ( 
+	PName char(20), 
+	Price decimal(9, 2), 
+	Category char(20), 
+	cid int,
+PRIMARY KEY (PName), 
+FOREIGN KEY (cid) REFERENCES Company(cid) ); 
+
+
+
+--------------------------- 
+-- Populate the tables 
+---------------------------
+
+insert into Company values (1, 'GizmoWorks', 25, 'USA'); 
+insert into Company values (2, 'GizmoWorks', 65, 'Japan'); 
+insert into Company values (3, 'Hitachi', 15, 'Japan'); 
+
+insert into Product values ('Gizmo', 19.99, 'Gadgets', 1); 
+insert into Product values ('PowerGizmo', 29.99, 'Gadgets', 1); 
+insert into Product values ('SingleTouch', 14.99, 'Photography', 2); 
+insert into Product values ('MultiTouch', 203.99, 'Household', 3); 
+
