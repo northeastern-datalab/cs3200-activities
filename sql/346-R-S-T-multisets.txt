@@ -1,0 +1,76 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS R0;
+DROP TABLE IF EXISTS S0;
+DROP TABLE IF EXISTS R;
+DROP TABLE IF EXISTS S;
+
+
+
+---------------------------
+-- Create the tables
+---------------------------
+
+create table R0( 
+	a int,
+	b char(1)); 
+
+create table S0( 
+	a int,
+	b char(1)); 
+
+create table R( 
+	a int,
+	b char(1),
+	lambda int);
+
+create table S( 
+	a int,
+	b char(1),
+	lambda int);
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO R0 VALUES (1, 'A'); 
+INSERT INTO R0 VALUES (1, 'A'); 
+INSERT INTO R0 VALUES (2, 'B'); 
+INSERT INTO R0 VALUES (2, 'B'); 
+INSERT INTO R0 VALUES (3, 'C'); 
+INSERT INTO R0 VALUES (3, 'C'); 
+INSERT INTO R0 VALUES (3, 'C'); 
+
+INSERT INTO S0 VALUES (1, 'A'); 
+INSERT INTO S0 VALUES (1, 'A'); 
+INSERT INTO S0 VALUES (1, 'A'); 
+INSERT INTO S0 VALUES (1, 'A'); 
+INSERT INTO S0 VALUES (1, 'A'); 
+INSERT INTO S0 VALUES (3, 'C'); 
+INSERT INTO S0 VALUES (3, 'C'); 
+INSERT INTO S0 VALUES (4, 'D'); 
+
+INSERT INTO R VALUES (1, 'A', 2); 
+INSERT INTO R VALUES (2, 'B', 2); 
+INSERT INTO R VALUES (3, 'C', 3); 
+
+INSERT INTO S VALUES (1, 'A', 5);
+INSERT INTO S VALUES (3, 'C', 2);
+INSERT INTO S VALUES (4, 'D', 1);
+
+
+
