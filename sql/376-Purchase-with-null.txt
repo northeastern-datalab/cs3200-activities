@@ -30,8 +30,8 @@ create table T (
 -- Populate the table
 --------------------------- 
 
-insert into T values ('Bagel', null); 
-insert into T values ('Bagel', 2); 
+insert into T values ('Apple', null); 
+insert into T values ('Apple', 2); 
 insert into T values ('Banana', 1); 
 insert into T values ('Banana', 2); 
 insert into T values ('Banana', 4); 

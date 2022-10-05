@@ -32,8 +32,8 @@ PRIMARY KEY (product, price, quantity) );
 -- Populate the table
 --------------------------- 
 
-insert into Purchase values ('Bagel', 3, 20); 
-insert into Purchase values ('Bagel', 2, 20); 
+insert into Purchase values ('Apple', 3, 20); 
+insert into Purchase values ('Apple', 2, 20); 
 insert into Purchase values ('Banana', 1, 50); 
 insert into Purchase values ('Banana', 2, 10); 
 insert into Purchase values ('Banana', 4, 10); 
