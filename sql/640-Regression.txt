@@ -1,0 +1,95 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS DATA1;
+DROP TABLE IF EXISTS DATA2;
+DROP TABLE IF EXISTS DATA3;
+DROP TABLE IF EXISTS DATA4;
+
+
+---------------------------
+-- Create the tables
+---------------------------
+
+create table data1 ( 
+	x decimal,
+	y decimal); 
+
+create table data2 ( 
+	x decimal,
+	y decimal); 
+
+create table data3 ( 
+	x decimal,
+	y decimal); 
+
+create table data4 ( 
+	x decimal,
+	y decimal); 
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+insert into data1 values (10.0 ,8.04 );
+insert into data1 values (8.0  ,6.95 );
+insert into data1 values (13.0 ,7.58 );
+insert into data1 values (9.0  ,8.81 );
+insert into data1 values (11.0 ,8.33 );
+insert into data1 values (14.0 ,9.96 );
+insert into data1 values (6.0  ,7.24 );
+insert into data1 values (4.0  ,4.26 );
+insert into data1 values (12.0 ,10.84);
+insert into data1 values (7.0  ,4.82 );
+insert into data1 values (5.0  ,5.68 );
+
+insert into data2 values (10.0 ,9.14 );
+insert into data2 values (8.0  ,8.14 );
+insert into data2 values (13.0 ,8.74 );
+insert into data2 values (9.0  ,8.77 );
+insert into data2 values (11.0 ,9.26 );
+insert into data2 values (14.0 ,8.10 );
+insert into data2 values (6.0  ,6.13 );
+insert into data2 values (4.0  ,3.10 );
+insert into data2 values (12.0 ,9.13 );
+insert into data2 values (7.0  ,7.26 );
+insert into data2 values (5.0  ,4.74 );
+
+insert into data3 values (10.0 ,7.46  );
+insert into data3 values (8.0  ,6.77  );
+insert into data3 values (13.0 ,12.74 );
+insert into data3 values (9.0  ,7.11  );
+insert into data3 values (11.0 ,7.81  );
+insert into data3 values (14.0 ,8.84  );
+insert into data3 values (6.0  ,6.08  );
+insert into data3 values (4.0  ,5.39  );
+insert into data3 values (12.0 ,8.15  );
+insert into data3 values (7.0  ,6.42  );
+insert into data3 values (5.0  ,5.73  );
+
+insert into data4 values (8.0  ,6.58 );
+insert into data4 values (8.0  ,5.76 );
+insert into data4 values (8.0  ,7.71 );
+insert into data4 values (8.0  ,8.84 );
+insert into data4 values (8.0  ,8.47 );
+insert into data4 values (8.0  ,7.04 );
+insert into data4 values (8.0  ,5.25 );
+insert into data4 values (19.0 ,12.50 );
+insert into data4 values (8.0  ,5.56 );
+insert into data4 values (8.0  ,7.91 );
+insert into data4 values (8.0  ,6.89 );
+
+

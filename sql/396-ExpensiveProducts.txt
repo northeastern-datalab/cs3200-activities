@@ -42,8 +42,10 @@ FOREIGN KEY (cid) REFERENCES Company(cid) );
 INSERT INTO Company VALUES (1, 'GizmoWorks', 'Oslo');
 INSERT INTO Company VALUES (2, 'Apple', 'MountainView');
 INSERT INTO Company VALUES (3, 'ToyFactory', 'DreamCity');
+INSERT INTO Company VALUES (4, 'ToyFactory', 'FakeCity');
 
 INSERT INTO Product VALUES ('Gizmo', 15, 1);
 INSERT INTO Product VALUES ('SuperGizmo', 20, 1);
 INSERT INTO Product VALUES ('iTouch1', 300, 2);
 INSERT INTO Product VALUES ('iTouch2', 300, 2);
+INSERT INTO Product VALUES ('SuperToy', 1000, 3);
