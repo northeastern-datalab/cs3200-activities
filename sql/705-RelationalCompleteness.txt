@@ -1,0 +1,45 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS R;
+DROP TABLE IF EXISTS S;
+DROP TABLE IF EXISTS T;
+DROP TABLE IF EXISTS T2;
+
+
+
+-------------------------
+-- Create tables
+-------------------------
+
+create table R (a int, b int); 
+create table S (a int); 
+create table T (a int); 
+create table T2 (a int); 
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+insert into R values (1, 9);
+insert into R values (2, 9);
+insert into R values (3, 9);
+insert into R values (5, 9);
+insert into S values (2);
+insert into S values (6);
+insert into T values (3);
+insert into T values (6);
+insert into T values (7);

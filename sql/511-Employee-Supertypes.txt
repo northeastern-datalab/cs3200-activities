@@ -1,0 +1,53 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS Consultant;
+DROP TABLE IF EXISTS Hourly_employee;
+DROP TABLE IF EXISTS Employee;
+
+
+
+---------------------------
+-- Create the tables
+---------------------------
+
+create table Employee( 
+	num int PRIMARY KEY, 
+	name varchar(20), 
+	datehired date,
+	etype varchar(1) not null,
+CHECK (etype in ('C', 'H', 'S'))); 
+
+create table Consultant( 
+	cnum int PRIMARY KEY, 
+	contract int, 
+	billingrate decimal(5,2), 
+FOREIGN KEY (cnum) REFERENCES Employee); 
+
+create table Hourly_employee( 
+	hnum int PRIMARY KEY, 
+	hourlyrate decimal(5,2), 
+FOREIGN KEY (hnum) REFERENCES Employee); 
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO Employee VALUES (1, 'Alice', '11-16-2022', 'C'); 
+INSERT INTO Consultant VALUES (1, 234, 50); 
+
+INSERT INTO Employee VALUES (2, 'Bob', '11-16-2022', 'H'); 
+INSERT INTO Hourly_employee VALUES (2, 30); 
