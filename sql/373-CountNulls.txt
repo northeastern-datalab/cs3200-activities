@@ -13,6 +13,7 @@
 ------------------------- 
 
 DROP TABLE IF EXISTS T; 
+DROP TABLE IF EXISTS S; 
 
 
 
@@ -24,6 +25,9 @@ CREATE TABLE T (
 	gid int,
 	val varchar(10));
 
+CREATE TABLE S (
+	gid int,
+	val int);
 
 
 ---------------------------
@@ -40,3 +44,14 @@ INSERT INTO T VALUES (2, Null);
 INSERT INTO T VALUES (3, 'A');
 INSERT INTO T VALUES (3, 'A');
 INSERT INTO T VALUES (3, 'Z');
+
+INSERT INTO S VALUES (1, Null);
+INSERT INTO S VALUES (1, Null);
+INSERT INTO S VALUES (2, 1);
+INSERT INTO S VALUES (2, 2);
+INSERT INTO S VALUES (2, 3);
+INSERT INTO S VALUES (2, 3);
+INSERT INTO S VALUES (2, Null);
+INSERT INTO S VALUES (3, 1);
+INSERT INTO S VALUES (3, 2);
+INSERT INTO S VALUES (3, 2);

@@ -1,0 +1,14 @@
+.decl Actor(id:number, fname:symbol, lname:symbol)
+.decl Plays(aid:number, mid:number)
+.decl Movie(id:number, name:symbol, year:number)
+Actor(344759,"Douglas", "Fowley").
+Plays(344759, 7909).
+Plays(344759, 29000).
+Movie(7909, "A Night in Armour", 1910).
+Movie(29000, "Arizona", 1940).
+Movie(29445, "Ave Maria", 1940).
+
+.decl Q2(fname:symbol, lname:symbol)
+Q2(f,l) :- Actor(u,f,l), Plays(u,x), Movie(x,_,z), z<1940.
+
+.output Q2
