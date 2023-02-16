@@ -1,0 +1,8 @@
+%-------------------------------------------------------------
+% CS 7240 Principles of scalable data management
+% https://northeastern-datalab.github.io/cs7240/
+% Wolfgang Gatterbauer
+%-------------------------------------------------------------
+
+
+path(X,Y) ?

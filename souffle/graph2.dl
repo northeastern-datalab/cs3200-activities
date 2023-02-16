@@ -1,0 +1,13 @@
+//-------------------------------------------------------------
+// CS 7240 Principles of scalable data management
+// https://northeastern-datalab.github.io/cs7240/
+// Wolfgang Gatterbauer
+//-------------------------------------------------------------
+
+.decl A(x:number, y:number)
+.decl P(x:number, y:number)
+.input A
+.output P
+
+P(x, y) :- A(x, y).   
+P(x, y) :- A(x, z), P(z, y).

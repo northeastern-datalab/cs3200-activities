@@ -1,7 +1,0 @@
-.decl A(x:number, y:number)
-.decl P(x:number, y:number)
-.input A
-.output P
-
-P(x, y) :- A(x, y).   
-P(x, y) :- A(x, z), P(z, y).

@@ -1,0 +1,12 @@
+//-------------------------------------------------------------
+// CS 7240 Principles of scalable data management
+// https://northeastern-datalab.github.io/cs7240/
+// Wolfgang Gatterbauer
+//-------------------------------------------------------------
+
+.decl fib(key:number, value:number)
+.output fib
+
+fib(1, 1).
+fib(2, 1).
+fib(id+2, x+y) :- fib(id, x), fib(id+1, y), id <= 13.

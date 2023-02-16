@@ -1,0 +1,12 @@
+%-------------------------------------------------------------
+% CS 7240 Principles of scalable data management
+% https://northeastern-datalab.github.io/cs7240/
+% Wolfgang Gatterbauer
+%-------------------------------------------------------------
+
+
+vertex(a). vertex(b). vertex(c). edge(a,b). edge(a,c).
+color(V,1) :- not color(V,2), not color(V,3), vertex(V). 
+color(V,2) :- not color(V,3), not color(V,1), vertex(V). 
+color(V,3) :- not color(V,1), not color(V,2), vertex(V). 
+:- edge(V,U), color(V,C), color(U,C).

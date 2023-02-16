@@ -1,0 +1,9 @@
+%-------------------------------------------------------------
+% CS 7240 Principles of scalable data management
+% https://northeastern-datalab.github.io/cs7240/
+% Wolfgang Gatterbauer
+%-------------------------------------------------------------
+
+
+a :- not b.
+b :- not a.
