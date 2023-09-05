@@ -1,0 +1,55 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+DROP TABLE IF EXISTS R;
+
+
+
+-------------------------
+-- Install the btree_gist extension 
+-- to define exclusion constraints 
+-- on plain scalar data types
+-------------------------
+CREATE EXTENSION IF NOT EXISTS btree_gist;
+
+
+
+---------------------------
+-- Create the tables
+--------------------------- 
+create table R ( 
+   A int,
+   B int,
+   C int,
+   D int,
+   EXCLUDE USING GIST(A with =, B with =, C with <>)); 
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+INSERT INTO R VALUES 
+(1, 1, 1, 1),
+(1, 1, 1, 2);
+
+
+
+
+---------------------------
+-- Attempted insert that create exclusion error
+---------------------------
+INSERT INTO R VALUES 
+(1, 1, 2, 1);
+
+

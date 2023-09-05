@@ -14,8 +14,6 @@
 
 DROP TABLE IF EXISTS L;
 DROP TABLE IF EXISTS R;
-DROP TABLE IF EXISTS L2;
-DROP TABLE IF EXISTS R2;
 
 
 
@@ -24,20 +22,10 @@ DROP TABLE IF EXISTS R2;
 ---------------------------
 
 create table L ( 
-	A char,
-	B int); 
+	A int); 
 
 create table R ( 
-	B int,
-	C char); 
-
-create table L2 ( 
-	A char,
-	B int); 
-
-create table R2 ( 
-	B int,
-	C char); 
+	A int); 
 
 
 
@@ -45,18 +33,9 @@ create table R2 (
 -- Populate the tables 
 ---------------------------
 
-insert into L values ('a', 1); 
-insert into L values ('b', 2); 
-insert into L values ('c', NULL);
+insert into L values (1); 
+insert into L values (2);
+insert into L values (null);
 
-insert into R values (2, 'd');
-insert into R values (3, 'e');
-insert into R values (4, 'f');
-
-insert into L2 values ('a', 1); 
-insert into L2 values ('b', 2); 
-insert into L2 values ('c', 3);
-
-insert into R2 values (2, 'd');
-insert into R2 values (3, 'e');
-insert into R2 values (NULL, 'f');
+insert into R values (1);
+insert into R values (null);

@@ -1,0 +1,49 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS C;
+DROP TABLE IF EXISTS A;
+DROP TABLE IF EXISTS B;
+
+
+
+
+---------------------------
+-- Create the tables
+---------------------------
+
+create table A( 
+	aid int PRIMARY KEY);
+
+create table B( 
+	bid int PRIMARY KEY);
+
+create table C( 
+	cid int PRIMARY KEY,
+FOREIGN KEY (cid) REFERENCES A,
+FOREIGN KEY (cid) REFERENCES B);
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO A VALUES (1); 
+INSERT INTO A VALUES (2);
+
+INSERT INTO B VALUES (2);
+INSERT INTO B VALUES (3);
+
+INSERT INTO C VALUES (2);

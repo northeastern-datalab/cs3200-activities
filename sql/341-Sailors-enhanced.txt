@@ -1,0 +1,77 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- Database instance slightly modified from Ramakrishnan, Gehrke: Database management systems, 2nd ed (2000)
+-- Wolfgang Gatterbauer
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS Reserves;
+DROP TABLE IF EXISTS Sailor;
+DROP TABLE IF EXISTS Boat;
+
+
+
+-------------------------
+-- Create the tables
+-------------------------
+
+create table Sailor ( 
+	sid int PRIMARY KEY, 
+	sname varchar(20), 
+	rating int, 
+	bdate date); 
+
+create table Boat ( 
+	bid int PRIMARY KEY, 
+	bname varchar(20), 
+	color varchar(20),
+	pdate date); 
+
+create table Reserves ( 
+	sid int, 
+	bid int, 
+	day date, 
+PRIMARY KEY (sid,bid,day), 
+FOREIGN KEY (sid) REFERENCES Sailor(sid), 
+FOREIGN KEY (bid) REFERENCES Boat(bid) ); 
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO Sailor VALUES (22, 'Dustin', 7, '3/26/1973');	
+INSERT INTO Sailor VALUES (29, 'Brutus', 1, '7/5/1985'); 
+INSERT INTO Sailor VALUES (31, 'Lubber', 8, '5/29/1963'); 
+INSERT INTO Sailor VALUES (32, 'Andy', 8, '6/8/1993'); 	
+INSERT INTO Sailor VALUES (58, 'Rusty', 10, '1/4/1983'); 
+INSERT INTO Sailor VALUES (64, 'Horatio', 7, '2/11/1983'); 
+INSERT INTO Sailor VALUES (71, 'Zorba', 10, '10/26/2002'); 
+INSERT INTO Sailor VALUES (74, 'Horatio', 9, '3/15/1983'); 
+INSERT INTO Sailor VALUES (85, 'Art', 3, '9/3/1992'); 
+INSERT INTO Sailor VALUES (95, 'Bob', 3, '10/18/1954'); 
+
+INSERT INTO Boat VALUES (101, 'Interlake', 'blue', '4/10/2013'); 
+INSERT INTO Boat VALUES (102, 'Interlake', 'red', '4/10/2013'); 
+INSERT INTO Boat VALUES (103, 'Clipper', 'green', '4/10/2013'); 
+INSERT INTO Boat VALUES (104, 'Marine', 'red', '4/10/2013'); 
+
+INSERT INTO Reserves VALUES (22, 101, '10/10/2018'); 
+INSERT INTO Reserves VALUES (22, 102, '10/10/2018'); 
+INSERT INTO Reserves VALUES (22, 103, '10/8/2018'); 
+INSERT INTO Reserves VALUES (22, 104, '10/7/2018'); 
+INSERT INTO Reserves VALUES (31, 102, '11/10/2018'); 
+INSERT INTO Reserves VALUES (31, 103, '11/6/2018'); 
+INSERT INTO Reserves VALUES (31, 104, '11/12/2018'); 
+INSERT INTO Reserves VALUES (64, 101, '9/5/2018'); 
+INSERT INTO Reserves VALUES (64, 102, '9/8/2018'); 
+INSERT INTO Reserves VALUES (74, 103, '9/8/2018'); 
