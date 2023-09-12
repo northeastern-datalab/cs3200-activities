@@ -16,6 +16,8 @@
 DROP TABLE IF EXISTS Reserves;
 DROP TABLE IF EXISTS Sailor;
 DROP TABLE IF EXISTS Boat;
+DROP TABLE IF EXISTS RedBoat;
+DROP TABLE IF EXISTS BlueBoat;
 
 
 
@@ -73,5 +75,15 @@ INSERT INTO Reserves VALUES (31, 102, '11/10/2018');
 INSERT INTO Reserves VALUES (31, 103, '11/6/2018'); 
 INSERT INTO Reserves VALUES (31, 104, '11/12/2018'); 
 INSERT INTO Reserves VALUES (64, 101, '9/5/2018'); 
-INSERT INTO Reserves VALUES (64, 102, '9/8/2018'); 
+INSERT INTO Reserves VALUES (64, 101, '9/8/2018'); 
 INSERT INTO Reserves VALUES (74, 103, '9/8/2018'); 
+
+SELECT *
+INTO RedBoat
+FROM Boat
+where color = 'red';
+
+SELECT *
+INTO BlueBoat
+FROM Boat
+where color = 'blue';
