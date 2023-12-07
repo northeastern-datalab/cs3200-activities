@@ -1,0 +1,20 @@
+%-------------------------------------------------------------
+% CS 7240 Principles of scalable data management
+% https://northeastern-datalab.github.io/cs7240/
+% https://github.com/northeastern-datalab/cs3200-activities/tree/master/clingo
+% Wolfgang Gatterbauer
+%-------------------------------------------------------------
+
+
+vertex(1..3). edge(1,2). edge(1,3). edge(2,3).
+color(X,1) | color(X,2) | color(X,3) :- vertex(X).
+notcolored :- edge(X,Y), color(X,C), color(Y,C).
+colored :- not notcolored.
+#show. 
+#show yes : colored. 
+#show no : notcolored.
+
+
+
+
+

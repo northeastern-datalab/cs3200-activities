@@ -1,0 +1,21 @@
+%-------------------------------------------------------------
+% CS 7240 Principles of scalable data management
+% https://northeastern-datalab.github.io/cs7240/
+% https://github.com/northeastern-datalab/cs3200-activities/tree/master/clingo
+% Wolfgang Gatterbauer
+%-------------------------------------------------------------
+
+
+% Facts
+vertex(1..4). edge(1,2..4). edge(2,3..4). edge(3,4).
+% Guess
+color(X,1) | color(X,2) | color(X,3) :- vertex(X).
+% Check undesired property (of being "uncolored")
+uncolored :- edge(X,Y), color(X,C), color(Y,C).
+
+
+% Additionally disallow undesired property
+:- uncolored.
+
+
+

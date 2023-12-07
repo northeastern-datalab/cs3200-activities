@@ -1,0 +1,21 @@
+%-------------------------------------------------------------
+% CS 7240 Principles of scalable data management
+% https://northeastern-datalab.github.io/cs7240/
+% https://github.com/northeastern-datalab/cs3200-activities/tree/master/clingo
+% Wolfgang Gatterbauer
+%-------------------------------------------------------------
+
+
+vertex(1..3). edge(1,2). edge(1,3). edge(2,3).
+cover(N,1) | cover(N,0) :- vertex (N).
+:- edge(X,Y), cover(X,0), cover(Y,0).
+#minimize {1, X : cover(X,1)}.
+
+
+
+#show. #show (X,C): cover(X,C).
+
+
+
+
+

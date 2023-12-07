@@ -1,0 +1,31 @@
+%-------------------------------------------------------------
+% CS 7240 Principles of scalable data management
+% https://northeastern-datalab.github.io/cs7240/
+% https://github.com/northeastern-datalab/cs3200-activities/tree/master/clingo
+% Wolfgang Gatterbauer
+%-------------------------------------------------------------
+
+
+% Facts
+vertex(1..4). edge(1,2..4). edge(2,3..4). edge(3,4).
+% Guess
+cover_exists(X,1) | cover_exists(X,0) :- vertex(X).
+% Check undesired properties (of not being valid, or VC of size >3)
+:- edge(X,Y), cover_exists(X,0), cover_exists(Y,0).
+solution_exists :- #count{X: cover_exists(X,1)} = 3.
+% Additionally disallow undesired property
+:- not solution_exists.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

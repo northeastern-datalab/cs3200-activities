@@ -1,0 +1,16 @@
+//-------------------------------------------------------------
+// CS 7240 Principles of scalable data management
+// https://northeastern-datalab.github.io/cs7240/
+// Wolfgang Gatterbauer
+//-------------------------------------------------------------
+
+.decl edge(x: symbol, y: symbol, wt:number)
+.input edge
+.decl path(x: symbol, y: symbol, wt:number)
+path(x,y,w) :- edge(x,y,w).
+path(x,z,w1+w2) :- path(x,y,w1), path(y,z,w2).
+.decl minpath(w:number)
+minpath(c) :- c = min w:{path("s","t",w)}.
+.output minpath
+
+

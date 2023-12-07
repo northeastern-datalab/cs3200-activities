@@ -1,0 +1,31 @@
+%-------------------------------------------------------------
+% CS 7240 Principles of scalable data management
+% https://northeastern-datalab.github.io/cs7240/
+% https://github.com/northeastern-datalab/cs3200-activities/tree/master/clingo
+% Wolfgang Gatterbauer
+%-------------------------------------------------------------
+
+
+% Facts
+vertex(1..4). edge(1,2..4). edge(2,3..4). edge(3,4).
+% Guess
+cover(X,1) | cover(X,0) :- vertex(X).
+% Check desired properties (of either being invalid, or VC of size>2)
+solution :- edge(X,Y), cover(X,0), cover(Y,0).
+solution :- #count{X: cover(X,1)} > 2.
+% Additionally require desired property
+:- not solution.
+% Additionally saturate if desired property holds
+cover(X,0..1) :- solution, vertex(X).
+
+
+
+
+
+
+
+
+
+
+
+
