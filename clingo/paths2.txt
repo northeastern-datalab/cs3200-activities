@@ -1,0 +1,13 @@
+%-------------------------------------------------------------
+% CS 7240 Principles of scalable data management
+% https://northeastern-datalab.github.io/cs7240/
+% https://github.com/northeastern-datalab/cs3200-activities/tree/master/clingo
+% Wolfgang Gatterbauer
+%-------------------------------------------------------------
+
+
+arc(a,b). arc(b,c).
+path(X,Y) :- arc(X,Y).
+path(X,Y) :- arc(X,Z), path(Z,Y).
+#show path/2.
+

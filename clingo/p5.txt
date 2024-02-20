@@ -1,0 +1,11 @@
+%-------------------------------------------------------------
+% CS 7240 Principles of scalable data management
+% https://northeastern-datalab.github.io/cs7240/
+% https://github.com/northeastern-datalab/cs3200-activities/tree/master/clingo
+% Wolfgang Gatterbauer
+%-------------------------------------------------------------
+
+
+a :- not b.
+b :- not a.
+a :- not a.
