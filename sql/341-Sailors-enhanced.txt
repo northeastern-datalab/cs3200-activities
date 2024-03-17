@@ -78,12 +78,12 @@ INSERT INTO Reserves VALUES (64, 101, '9/5/2018');
 INSERT INTO Reserves VALUES (64, 101, '9/8/2018'); 
 INSERT INTO Reserves VALUES (74, 103, '9/8/2018'); 
 
-SELECT *
+SELECT bid, bname, pdate
 INTO RedBoat
 FROM Boat
 where color = 'red';
 
-SELECT *
+SELECT bid, bname, pdate
 INTO BlueBoat
 FROM Boat
 where color = 'blue';
