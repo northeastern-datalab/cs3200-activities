@@ -1,0 +1,41 @@
+-------------------------------------------------------------
+-- cs3200 Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- CS 7240 Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- Wolfgang Gatterbauer
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS Likes;
+
+
+---------------------------
+-- Create the tables
+---------------------------
+
+create table Likes( 
+	drinker varchar(20), 
+	beer int, 
+PRIMARY KEY (drinker, beer)); 
+
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO Likes VALUES ('A', 1); 
+INSERT INTO Likes VALUES ('B', 1); 
+INSERT INTO Likes VALUES ('B', 2); 
+INSERT INTO Likes VALUES ('C', 1); 
+INSERT INTO Likes VALUES ('C', 2); 
+INSERT INTO Likes VALUES ('D', 1); 
+INSERT INTO Likes VALUES ('D', 2); 
+INSERT INTO Likes VALUES ('D', 3); 
+
