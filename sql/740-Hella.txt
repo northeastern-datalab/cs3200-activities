@@ -1,0 +1,46 @@
+-------------------------------------------------------------
+-- cs7575: A Seminar On Relational Language Design
+-- https://northeastern-datalab.github.io/cs7575/
+-- cs7240: Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- cs3200: Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- Wolfgang Gatterbauer
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS R;
+DROP TABLE IF EXISTS S;
+
+
+-------------------------
+-- Create the tables
+-------------------------
+
+create table R ( 
+	empl varchar(20),
+	dept varchar(20));
+
+create table S ( 
+	empl varchar(20),
+	sal int); 
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO R VALUES ('a', 'd1'); 
+INSERT INTO R VALUES ('b', 'd1'); 
+INSERT INTO R VALUES ('c', 'd2'); 
+INSERT INTO R VALUES ('d', 'd3'); 
+
+INSERT INTO S VALUES ('a', 100); 
+INSERT INTO S VALUES ('b', 100); 
+INSERT INTO S VALUES ('c', 200); 
+INSERT INTO S VALUES ('d', 50); 

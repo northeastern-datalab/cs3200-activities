@@ -1,0 +1,68 @@
+-------------------------------------------------------------
+-- cs7575: A Seminar On Relational Language Design
+-- https://northeastern-datalab.github.io/cs7575/
+-- cs7240: Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- cs3200: Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- Wolfgang Gatterbauer
+-------------------------------------------------------------
+
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS R;
+DROP TABLE IF EXISTS S;
+
+
+
+-------------------------
+-- Create the tables
+-------------------------
+
+CREATE TABLE R (
+    id INTEGER,
+    q INTEGER
+);
+
+CREATE TABLE S (
+    id INTEGER,
+    d INTEGER
+);
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO R VALUES
+(9, 0);   
+
+
+
+
+-- Query 1
+SELECT R.id
+FROM R 
+WHERE R.q = 
+  (SELECT COUNT(S.d)
+  FROM S
+  WHERE S.id = R.id);
+
+
+
+-- Query 2
+WITH X AS 
+  (SELECT S.id, COUNT(S.d) AS ct 
+  FROM S
+  GROUP BY S.id)
+SELECT R.id
+FROM R, X 
+WHERE R.q= X.ct 
+AND R.id = X.id;
+
+
