@@ -18,6 +18,7 @@
 DROP TABLE IF EXISTS A;
 DROP TABLE IF EXISTS B;
 DROP TABLE IF EXISTS M;
+DROP TABLE IF EXISTS S;
 
 
 
@@ -28,6 +29,7 @@ DROP TABLE IF EXISTS M;
 create table A (row int, col int, val real); 
 create table B (row int, col int, val real); 
 create table M (v1 real, v2 real, out real); 
+create table S (v1 real, v2 real, out real); 
 
 
 
@@ -51,3 +53,8 @@ insert into M values (3, 2, 6);
 insert into M values (4, 1, 4);
 insert into M values (4, 3, 12);
 
+insert into S values (1, 1, 2);
+insert into S values (1, 2, 3);
+insert into S values (3, 2, 5);
+insert into S values (4, 1, 5);
+insert into S values (4, 3, 7);
