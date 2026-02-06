@@ -1,17 +1,19 @@
 -------------------------------------------------------------
--- cs3200 Database design
+-- cs3200: Introduction to Databases (formerl Database design)
 -- https://northeastern-datalab.github.io/cs3200/
--- CS 7240 Principles of scalable data management
+-- cs7240: Principles of scalable data management
 -- https://northeastern-datalab.github.io/cs7240/
+-- cs7575: A Seminar On Relational Language Design
+-- https://northeastern-datalab.github.io/cs7575/
 -- Wolfgang Gatterbauer
 -------------------------------------------------------------
-
 
 
 -------------------------
 -- Drop tables if they already exist
 -------------------------
 
+DROP TABLE IF EXISTS V;
 DROP TABLE IF EXISTS A;
 DROP TABLE IF EXISTS E;
 
@@ -20,6 +22,9 @@ DROP TABLE IF EXISTS E;
 ---------------------------
 -- Create the tables
 ---------------------------
+
+create table V( 
+	ID int); 
 
 create table A( 
 	S int, 
@@ -34,6 +39,13 @@ create table E(
 ---------------------------
 -- Populate the tables
 ---------------------------
+
+INSERT INTO V VALUES (1); 
+INSERT INTO V VALUES (2); 
+INSERT INTO V VALUES (3); 
+INSERT INTO V VALUES (4); 
+INSERT INTO V VALUES (5); 
+INSERT INTO V VALUES (6); 
 
 INSERT INTO A VALUES (1, 2); 
 INSERT INTO A VALUES (2, 1);
