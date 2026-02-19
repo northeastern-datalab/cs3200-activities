@@ -1,0 +1,44 @@
+-------------------------------------------------------------
+-- cs7575: A Seminar On Relational Language Design
+-- https://northeastern-datalab.github.io/cs7575/
+-- cs7240: Principles of scalable data management
+-- https://northeastern-datalab.github.io/cs7240/
+-- cs3200: Database design
+-- https://northeastern-datalab.github.io/cs3200/
+-- Wolfgang Gatterbauer
+-------------------------------------------------------------
+
+
+
+-------------------------
+-- Drop tables if they already exist
+-------------------------
+
+DROP TABLE IF EXISTS X;
+DROP TABLE IF EXISTS Y;
+
+
+-------------------------
+-- Create the tables
+-------------------------
+
+create table X ( 
+	A int); 
+
+create table Y ( 
+	B int); 
+
+
+---------------------------
+-- Populate the tables
+---------------------------
+
+INSERT INTO X VALUES (1); 
+INSERT INTO X VALUES (2); 
+INSERT INTO X VALUES (3); 
+INSERT INTO X VALUES (4); 
+
+INSERT INTO Y VALUES (1); 
+INSERT INTO Y VALUES (2); 
+INSERT INTO Y VALUES (3); 
+INSERT INTO Y VALUES (4); 
