@@ -1,0 +1,35 @@
+//-------------------------------------------------------------
+// CS 7240 Principles of scalable data management
+// https://northeastern-datalab.github.io/cs7240/
+// cs7575: A Seminar On Relational Language Design
+// https://northeastern-datalab.github.io/cs7575/
+// Wolfgang Gatterbauer
+//-------------------------------------------------------------
+
+.decl A(S:number, T:number)
+A(1,2).
+A(2,1).
+A(2,3).
+A(1,4).
+A(3,4).
+A(4,5).
+
+.decl N(id:number)
+N(1).
+N(2).
+N(3).
+N(4).
+N(5).
+
+
+
+.decl P(S:number, T:number)
+P(x, y) :- A(x, y).   
+P(x, y) :- A(x, z), P(z, y).
+
+.decl U(s:number, t:number)
+U(x, y) :- N(x), N(y), ! P(x, y).
+
+
+
+.output U
