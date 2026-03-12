@@ -25,24 +25,30 @@ DROP TABLE IF EXISTS S;
 -------------------------
 
 create table R ( 
-	empl varchar(20),
-	dept varchar(20));
+	A varchar(20),
+	B int); 
 
 create table S ( 
-	empl varchar(20),
-	sal int); 
+	A varchar(20),
+	B varchar(20),
+	C int); 
 
 
 ---------------------------
 -- Populate the tables
 ---------------------------
 
-INSERT INTO R VALUES ('a', 'd1'); 
-INSERT INTO R VALUES ('b', 'd1'); 
-INSERT INTO R VALUES ('c', 'd2'); 
-INSERT INTO R VALUES ('d', 'd3'); 
+INSERT INTO R VALUES ('a', 1); 
+INSERT INTO R VALUES ('a', 2); 
+INSERT INTO R VALUES ('b', 3); 
+INSERT INTO R VALUES ('b', 4); 
+INSERT INTO R VALUES ('c', 5); 
+INSERT INTO R VALUES ('e', 6); 
 
-INSERT INTO S VALUES ('a', 100); 
-INSERT INTO S VALUES ('b', 100); 
-INSERT INTO S VALUES ('c', 200); 
-INSERT INTO S VALUES ('d', 50); 
+INSERT INTO S VALUES ('p', 'a', 1); 
+INSERT INTO S VALUES ('p', 'a', 2); 
+INSERT INTO S VALUES ('q', 'b', 3); 
+INSERT INTO S VALUES ('q', 'b', 4); 
+INSERT INTO S VALUES ('r', 'a', 1); 
+INSERT INTO S VALUES ('r', 'a', 2); 
+INSERT INTO S VALUES ('r', 'b', 2); 

@@ -27,19 +27,20 @@ DROP TABLE IF EXISTS Serves;
 ---------------------------
 
 create table Likes( 
-	person char(20), 
-	drink char(20), 
-PRIMARY KEY (person, drink)); 
+	drinker varchar(20), 
+	beer varchar(20), 
+PRIMARY KEY (drinker, beer)); 
 
 create table Frequents( 
-	person char(20), 
-	bar char(20), 
-PRIMARY KEY (person, bar));
+	drinker varchar(20), 
+	bar varchar(20), 
+PRIMARY KEY (drinker, bar));
 
 create table Serves( 
-	bar char(20), 
-	drink char(20), 
-PRIMARY KEY (bar, drink)); 
+	bar varchar(20), 
+	beer varchar(20), 
+   	price numeric(5,2),
+PRIMARY KEY (bar, beer)); 
 
 
 
@@ -51,17 +52,25 @@ INSERT INTO Likes VALUES ('Alice', 'Whitebeer');
 INSERT INTO Likes VALUES ('Bob', 'Brownbeer'); 
 INSERT INTO Likes VALUES ('Charlie', 'Whitebeer'); 
 INSERT INTO Likes VALUES ('Charlie', 'Blackbeer'); 
+INSERT INTO Likes VALUES ('Eve', 'Lager');
+INSERT INTO Likes VALUES ('Alice', 'Lager');
 
-INSERT INTO Serves VALUES ('Groundbar', 'Whitebeer'); 
-INSERT INTO Serves VALUES ('Seabar', 'Whitebeer'); 
-INSERT INTO Serves VALUES ('Seabar', 'Blackbeer'); 
-INSERT INTO Serves VALUES ('Skybar', 'Whitebeer'); 
-INSERT INTO Serves VALUES ('Skybar', 'Brownbeer'); 
-INSERT INTO Serves VALUES ('Skybar', 'Blackbeer'); 
+INSERT INTO Serves VALUES ('Groundbar', 'Whitebeer', 1.00); 
+INSERT INTO Serves VALUES ('Seabar', 'Whitebeer', 2.00); 
+INSERT INTO Serves VALUES ('Seabar', 'Blackbeer', 2.00); 
+INSERT INTO Serves VALUES ('Skybar', 'Whitebeer', 3.00); 
+INSERT INTO Serves VALUES ('Skybar', 'Brownbeer', 4.00); 
+INSERT INTO Serves VALUES ('Skybar', 'Blackbeer', 5.00); 
+INSERT INTO Serves VALUES ('Groundbar', 'Lager', 5.00);
+INSERT INTO Serves VALUES ('Seabar',    'Lager', 7.00);
+INSERT INTO Serves VALUES ('Skybar',    'Lager', 9.00);
 
 INSERT INTO Frequents VALUES ('Alice', 'Seabar'); 
-INSERT INTO Frequents VALUES ('Alice', 'Skybar'); 
+INSERT INTO Frequents VALUES ('Alice', 'Groundbar'); 
 INSERT INTO Frequents VALUES ('Bob', 'Groundbar'); 
 INSERT INTO Frequents VALUES ('Bob', 'Seabar'); 
 INSERT INTO Frequents VALUES ('Charlie', 'Seabar'); 
+INSERT INTO Frequents VALUES ('Eve', 'Groundbar'); 
+INSERT INTO Frequents VALUES ('Eve', 'Seabar'); 
+INSERT INTO Frequents VALUES ('Eve', 'Skybar'); 
 

@@ -1,13 +1,14 @@
 -------------------------------------------------------------
--- cs3200: Introduction to Databases (former: Database design)
+-- SQL examples
+-- https://github.com/northeastern-datalab/cs3200-activities/tree/master/sql
+-- CS 3200: Introduction to Databases (formerly Database design)
 -- https://northeastern-datalab.github.io/cs3200/
--- cs7240: Principles of scalable data management
+-- CS 7240: Principles of scalable data management
 -- https://northeastern-datalab.github.io/cs7240/
--- cs7575: A Seminar On Relational Language Design
+-- CS 7575: A Seminar On Relational Language Design
 -- https://northeastern-datalab.github.io/cs7575/
 -- Wolfgang Gatterbauer
 -------------------------------------------------------------
-
 
 
 
