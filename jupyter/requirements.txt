@@ -1,6 +1,6 @@
 ipython-sql==0.3.9
 jupyter==1.0.0
-markdown==2.6.11
+markdown==3.8.1
 numpy==1.22.0
 matplotlib
 redis

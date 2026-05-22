@@ -1,0 +1,28 @@
+//-------------------------------------------------------------
+// CS 7240 Principles of scalable data management
+// https://northeastern-datalab.github.io/cs7240/
+// CS 7575: A Seminar On Relational Language Design
+// https://northeastern-datalab.github.io/cs7575/
+// Wolfgang Gatterbauer
+//-------------------------------------------------------------
+
+.decl Empl(eid:symbol, k:number)
+Empl("a", 1). 
+Empl("b", 2). 
+Empl("c", 3). 
+
+.decl Sales(eid:symbol, val:number, date:symbol)
+Sales("a", 10, "1/1/26").
+Sales("a", 20, "1/2/26").
+Sales("b", 40, "1/1/26").
+
+.decl Q(eid:symbol, sm:number)
+// Q(x, sum y: {Sales(x, y,_)}) :- Empl(x,_).
+Q(x, sm) :- Empl(x,_), sm = sum y: {Sales(z, y, _), z<x}.
+
+.output Q
+
+
+
+
+// Empl(eid,k), Sales(eid,val,date)
